@@ -1,0 +1,15 @@
+body{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+
+}
+
+.form-control{
+    width: 600px;
+    height: 500px;
+}
+ 
+input{
+    width: 500px;
+}
