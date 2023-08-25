@@ -28,3 +28,8 @@ Route::get('/index', function () {
 Route::get('/perusahaan', function () {
     return view('admin.component.perusahaan');
 });
+
+
+Route::get('/login', function () {
+    return view('auth.login');
+});
