@@ -33,3 +33,7 @@ Route::get('/perusahaan', function () {
 Route::get('/login', function () {
     return view('auth.login');
 });
+
+Route::get('/detail', function () {
+    return view('admin.component.detail');
+});
