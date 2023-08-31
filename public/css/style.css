@@ -5,7 +5,7 @@ body{
     width: 100%;
     margin: 0;
     padding: 0;
-    background-color: rgb(238, 238, 238);
+    background-color: rgb(255, 255, 255);
     font-family: 'Poppins', sans-serif;
 
 }
@@ -32,6 +32,24 @@ body{
 .card{
     justify-content: center;
 }
+
+
+/* Style icon fontawesome */
+.fa-building{
+    color: green;
+}
+
+.fa-user{
+    color: green;
+}
+
+.fa-wrench{
+    color: green;
+}
+
+
+
+
 a{
     text-decoration: none;
 }
