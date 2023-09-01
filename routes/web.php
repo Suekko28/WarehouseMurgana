@@ -37,3 +37,11 @@ Route::get('/login', function () {
 Route::get('/detail', function () {
     return view('admin.component.detail');
 });
+
+Route::get('/pengguna', function () {
+    return view('admin.component.pengguna');
+});
+
+Route::get('/peralatan', function () {
+    return view('admin.component.peralatan');
+});
