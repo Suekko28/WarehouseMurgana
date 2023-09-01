@@ -100,7 +100,7 @@
                 Admin
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Welcome ! </a></li>
+                <li><a class="dropdown-item disabled" href="#">Welcome ! </a></li>
                 <li><a class="dropdown-item" href="#">Log out</a></li>
               </ul>
             </li>
