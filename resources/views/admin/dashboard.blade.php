@@ -94,33 +94,24 @@
     <div class="container">
       <h2 class="text-capitalize text-center mb-4">Overview Dashboard</h2>
     <div class="card-group">
-      <div class="card h-50 me-3 shadow border">
+      <div class="card  me-3 shadow border">
         <div class="card-body text-center p-5">
-          <div class="d-flex justify-content-center">
-            <i class="fas fa-solid fa-building fa-lg me-2"></i>             
-          <h5 class="card-title text-success">Perusahaan</h5>
-          </div>
-          <h5 class="card-text text-success fw-bold mt-2">1234123</h5>
+            <h5 class="card-title text-success"><i class="fas fa-regular fa-building  me-2"></i>Perusahaan</h5>             
+          <h4 class="card-text text-success fw-bold mt-3">1234123</h4>
         </div>
       </div>
 
-      <div class="card h-50 me-3 shadow border">
+      <div class="card  me-3 shadow border">
         <div class="card-body text-center p-5">
-          <div class="d-flex justify-content-center">
-            <i class="fas fa-solid fa-wrench fa-lg me-2"></i>            
-            <h5 class="card-title text-success">Peralatan</h5>
-          </div>
-          <h5 class="card-text text-success fw-bold mt-2">1234123</h5>
+            <h5 class="card-title text-success"><i class="fas fa-solid fa-screwdriver-wrench  me-2"></i>Peralatan</h5>             
+          <h4 class="card-text text-success fw-bold mt-3">1234123</h4>
         </div>
       </div>
 
-      <div class="card h-50 me-3 shadow border">
+      <div class="card  me-3 shadow border">
         <div class="card-body text-center p-5">
-          <div class="d-flex justify-content-center">
-            <i class="fas fa-solid fa-user fa-lg me-2"></i>          
-            <h5 class="card-title text-success">Pengguna</h5>
-          </div>
-          <h5 class="card-text text-success fw-bold mt-2">1234123</h5>
+            <h5 class="card-title text-success"><i class="fas fa-solid fa-user me-2"></i>Pengguna</h5>             
+          <h4 class="card-text text-success fw-bold mt-3">1234123</h4>
         </div>
       </div>
       

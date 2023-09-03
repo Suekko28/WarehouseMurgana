@@ -10,9 +10,9 @@ body{
 }
 
 
-.btn-pengguna {
+/* .btn-pengguna {
     margin-right: 3em;
-}
+} */
 
 #formSearch{
     margin-right: 10em;
@@ -26,6 +26,8 @@ body{
 .card{
     justify-content: center;
 }
+
+
 
 
 /* Style icon fontawesome */
@@ -46,8 +48,11 @@ body{
 }
 
 .nama-pt{
-    top: 75%;
-    right:0px;
+    padding-top: 1em;
+    font-size:large;
+    font-weight:bold;
+    top: 12em;
+    
 }
 
 .gambar-pt{

@@ -3,15 +3,18 @@
 @section('Navbar')
     <main>
         <div class="container">
+          <div class="row">
+            <div class="col-12 col-xl-12 col-lg-12 col-md-12">
+  
             <div class="card p-5">
                 <div class="row justify-content-between">
-                    <div class="col-5">
+                    <div class="col">
                       <h5 class="text-success fw-bold">Nama Perusahaan</h5>
                     </div>
-                    <div class="col-5">
-                        <button type="button" class="btn btn-outline-success btn-md mb-5 fa fa-plus text-right me-3" data-bs-toggle="modal" data-bs-target="#exampleModal"> Barang</button>
-                        <button type="button" class="btn btn-outline-danger btn-md mb-5 fa fa-solid fa-file-import text-right me-3 "> Import</button>
-                        <button type="button" class="btn btn-outline-primary btn-md mb-5 fa fa-solid fa-download text-right me-3"> Download</button>
+                    <div class="col text-right">
+                        <button type="button" class="btn btn-outline-success btn-md mb-5   me-3" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-plus"></i> Barang</button>
+                        <button type="button" class="btn btn-outline-danger btn-md mb-5 me-3"><i class="fa-solid fa-file-import"></i> Import</button>
+                        <button type="button" class="btn btn-outline-primary btn-md mb-5 me-3"><i class="fa-solid fa-download"></i> Download</button>
                     </div>   
             </div>
 
@@ -24,11 +27,33 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
-                    ...
+                    <form>
+                      <div class="mb-3">
+                        <label for="kategori" class="form-label">Kategori Alat</label>
+                        <input type="text" class="form-control w-100" id="kategori" aria-describedby="name" value="">
+                      </div>
+                      <div class="mb-3">
+                        <label for="lokasi" class="form-label">Lokasi</label>
+                        <input type="text" class="form-control w-100" id="lokasi" aria-describedby="email" value="">
+                      </div>
+                      <div class="mb-3">
+                        <label for="pabrik" class="form-label">Pabrik Pembuatan</label>
+                        <input type="text" class="form-control w-100" id="pabrik">
+                      </div>
+                      <div class="mb-3">
+                        <label for="seri" class="form-label">No.Seri</label>
+                        <input type="text" class="form-control w-100" id="seri">
+                      </div>
+                      <div class="mb-3">
+                        <label for="pengesahan" class="form-label">No.Pengesahan</label>
+                        <input type="text" class="form-control w-100" id="pengesahan">
+                      </div>
+                      
+                    </form>
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary">Simpan Data</button>
                   </div>
                 </div>
               </div>
@@ -57,9 +82,9 @@
                         <td>Otto</td>
                         <td>Otto</td>
                         <td>
-                          <button type="button" class="btn btn-primary  fa fa-file text-right mb-2"></button>
-                          <button type="button" class="btn btn-warning  fa fa-solid fa-pen text-right mb-2"></button>
-                          <button type="button" class="btn btn-danger  fa fa-solid fa-trash text-right mb-2"></button>    
+                          <button type="button" class="btn btn-primary mb-2"><i class=" fa fa-file"></i></button>
+                          <button type="button" class="btn btn-warning mb-2"><i class=" fa fa-solid fa-pen-to-square" style="color:white;"></i></button>
+                          <button type="button" class="btn btn-danger mb-2"><i class="fa fa-solid fa-trash"></i></button>    
                       </td>
                       </tr>
                       <tr>
@@ -90,6 +115,8 @@
               </div>
             </div>
         </div>
+            </div>
+          </div>
 
         
      
