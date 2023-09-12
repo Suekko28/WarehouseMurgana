@@ -34,6 +34,13 @@
         </form>
       </div>
 
+      <div class="mb-3">
+        <label for="name" class="form-label">Nama Perusahaan</label>
+        <input type="text" class="form-control w-100" id="name" aria-describedby="name">
+      </div>
+    </form>
+  </div>
+
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
         <button type="button" class="btn btn-primary">Simpan Data</button>
