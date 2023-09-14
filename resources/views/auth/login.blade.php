@@ -36,14 +36,14 @@
     </head>
 
 <body>
-    <div class="bg" style="
+    <div class="bg " style="
     background-repeat: no-repeat;
     height: 100vh;
   background-size: cover;
   background-image: linear-gradient(to top, rgba(0, 0, 0, .6), rgba(0, 0, 0, .3)), url('/template/login.jpeg');">
     <div class="authentication-bg rounded">
-        <div class="account-pages py-5">
-            <div class="container col-5">
+        <div class="account-pages">
+            <div class="container col-6">
                 <div class="card">
                     <div class="card-body">
                         <div class="mx-auto">
