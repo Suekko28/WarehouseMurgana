@@ -6,15 +6,15 @@
           <div class="row">
             <div class="col-12 col-xl-12 col-lg-12 col-md-12">
   
-            <div class="card p-5">
+            <div class="card p-5 shadow-md">
                 <div class="row justify-content-between">
                     <div class="col">
                       <h5 class="text-success fw-bold">Nama Perusahaan</h5>
                     </div>
                     <div class="col text-right">
-                        <button type="button" class="btn btn-outline-success btn-md mb-5   me-3" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-plus"></i> Barang</button>
-                        <button type="button" class="btn btn-outline-danger btn-md mb-5 me-3"><i class="fa-solid fa-file-import"></i> Import</button>
-                        <button type="button" class="btn btn-outline-primary btn-md mb-5 me-3"><i class="fa-solid fa-download"></i> Download</button>
+                        <button type="button" class="btn btn-outline-success btn-md mb-5 me-2" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-plus"></i> Barang</button>
+                        <button type="button" class="btn btn-outline-danger btn-md mb-5 me-2"><i class="fa-solid fa-file-import"></i> Import</button>
+                        <button type="button" class="btn btn-outline-primary btn-md mb-5 "><i class="fa-solid fa-download"></i> Download</button>
                     </div>   
             </div>
 
@@ -60,7 +60,7 @@
             </div>
 
             <div class="table-responsive">
-                <table class="table table-bordered">
+                <table class="table table-bordered text-center">
                     <caption>List of users</caption>
                     <thead>
                       <tr>
@@ -70,6 +70,7 @@
                         <th scope="col">Pabrik Pembuat</th>
                         <th scope="col">No.Seri</th>
                         <th scope="col">No.Pengesahan</th>
+                        <th scope="col">Keterangan</th>
                         <th scope="col">Aksi</th>
                       </tr>
                     </thead>
@@ -79,6 +80,7 @@
                         <td>Mark</td>
                         <td>Otto</td>
                         <td>@mdo</td>
+                        <td>Otto</td>
                         <td>Otto</td>
                         <td>Otto</td>
                         <td>
@@ -95,6 +97,11 @@
                         <td>Otto</td>
                         <td>Otto</td>
                         <td>Otto</td>
+                        <td>
+                          <button type="button" class="btn btn-primary mb-2"><i class=" fa fa-file"></i></button>
+                          <button type="button" class="btn btn-warning mb-2"><i class=" fa fa-solid fa-pen-to-square" style="color:white;"></i></button>
+                          <button type="button" class="btn btn-danger mb-2"><i class="fa fa-solid fa-trash"></i></button>    
+                      </td>
                       </tr>
                       <tr>
                         <th scope="row">1</th>
@@ -103,17 +110,18 @@
                         <td>@mdo</td>
                         <td>Otto</td>
                         <td>Otto</td>
-                        <td>Otto</td>
+                        <td class="btn bg-success text-white mt-1">Sisa masa berlaku 7 hari</td>
+                        <td>
+                          <button type="button" class="btn btn-primary mb-2"><i class=" fa fa-file"></i></button>
+                          <button type="button" class="btn btn-warning mb-2"><i class=" fa fa-solid fa-pen-to-square" style="color:white;"></i></button>
+                          <button type="button" class="btn btn-danger mb-2"><i class="fa fa-solid fa-trash"></i></button>    
+                      </td>
                       </tr>
                     </tbody>
                 </table>
               </div>
               
-              <div class="row justify-content-center">
-              <div class="col-lg-6 p-1 rounded bg-success text-center text-white">
-                  SISA WAKTU
-              </div>
-            </div>
+             
         </div>
             </div>
           </div>
