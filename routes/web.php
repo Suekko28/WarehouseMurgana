@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CompanyController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,20 +15,22 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('admin.dashboard');
+    return view('dashboard');
 });
 
 Route::get('/create', function () {
-    return view('admin.create');
+    return view('user.create');
 });
 
 Route::get('/index', function () {
-    return view('admin.index');
+    return view('user.index');
 });
 
-Route::get('/perusahaan', function () {
-    return view('admin.component.perusahaan');
-});
+// Route::get('/perusahaan', function () {
+//     return view('user.component.perusahaan');
+// });
+
+Route::resource('perusahaan', CompanyController::class);
 
 
 Route::get('/login', function () {
@@ -35,13 +38,13 @@ Route::get('/login', function () {
 });
 
 Route::get('/detail', function () {
-    return view('admin.component.detail');
+    return view('company.detail');
 });
 
 Route::get('/pengguna', function () {
-    return view('admin.component.pengguna');
+    return view('user.pengguna');
 });
 
 Route::get('/peralatan', function () {
-    return view('admin.component.peralatan');
+    return view('user.peralatan');
 });
