@@ -10,9 +10,15 @@ class Company extends Model
     protected $fillable = [
         'name',
     ];
-
+    protected $primaryKey = "id";
     protected $table = 'companies';
+
+    public function item(){
+
+        return $this->hasMany(Item::class);
+    }
+
     use HasFactory;
 
-    
+
 }

@@ -51,7 +51,7 @@ class CompanyController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id): View
+    public function show(string $id)
     {
         $data = Company::findOrFail($id);
         return view('company.detail', compact('data'));
@@ -81,6 +81,7 @@ class CompanyController extends Controller
     {
         //
     }
+
 
 
    
