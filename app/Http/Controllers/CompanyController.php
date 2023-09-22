@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Company;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
 class CompanyController extends Controller
@@ -12,7 +13,7 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        $data = Company::orderBy('id', 'desc')->paginate(9);
+        $data = Company::orderBy('id', 'desc')->paginate(8);
         return view('company.perusahaan')->with('data', $data);
     }
 
@@ -21,6 +22,8 @@ class CompanyController extends Controller
      */
     public function create()
     {
+
+        return view('company.perusahaan');
         //
     }
 
@@ -37,8 +40,9 @@ class CompanyController extends Controller
         ]);
 
         $data = [
-            'name' => $request->name,
+            'name' => $request->name
         ];
+        // $data['user_id'] = auth()->user()->id;
         Company::create($data);
         return redirect()->to('perusahaan')->with('success', 'Berhasil Menambahkan Data');
         //
@@ -47,8 +51,10 @@ class CompanyController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $id): View
     {
+        $data = Company::findOrFail($id);
+        return view('company.detail', compact('data'));
         //
     }
 
@@ -75,4 +81,7 @@ class CompanyController extends Controller
     {
         //
     }
+
+
+   
 }

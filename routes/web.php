@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CompanyController;
+use App\Models\Company;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,6 +32,10 @@ Route::get('/index', function () {
 // });
 
 Route::resource('perusahaan', CompanyController::class);
+
+// Route::resource('detail', CompanyController::class);
+
+Route::get('perusahaan/detail/{id}', [CompanyController::class, 'show']);
 
 
 Route::get('/login', function () {

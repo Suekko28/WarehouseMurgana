@@ -9,7 +9,7 @@
             <div class="card p-5 shadow-md">
                 <div class="row justify-content-between">
                     <div class="col">
-                      <h5 class="text-success fw-bold">Nama Perusahaan</h5>
+                      <h5 class="text-success fw-bold">{{ $data->name }}</h5>
                     </div>
                     <div class="col text-right">
                         <button type="button" class="btn btn-outline-success btn-md mb-5 me-2" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-plus"></i> Barang</button>
@@ -47,6 +47,10 @@
                       <div class="mb-3">
                         <label for="pengesahan" class="form-label">No.Pengesahan</label>
                         <input type="text" class="form-control w-100" id="pengesahan">
+                      </div>
+                      <div class="mb-3">
+                        <label for="file" class="form-label">File</label>
+                        <input type="file" class="form-control w-100" id="file" accept=".pdf">
                       </div>
                       
                     </form>
