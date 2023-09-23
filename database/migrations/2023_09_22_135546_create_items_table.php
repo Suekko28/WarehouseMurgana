@@ -16,11 +16,13 @@ return new class extends Migration
             $table->string('alat');
             $table->string('lokasi');
             $table->string('pabrik');
-            $table->integer('seri');
-            $table->integer('pengesahan');
+            $table->string('seri');
+            $table->string('pengesahan');
             $table->string('keterangan');
             $table->string('file');
+            $table->unsignedBigInteger('item_id');
             $table->timestamps();
+            $table->foreign('item_id')->references('id')->on('companies')->onDelete('cascade');
         });
     }
 

@@ -36,9 +36,9 @@ Route::resource('perusahaan', CompanyController::class);
 
 // Route::resource('detail', CompanyController::class);
 
-Route::get('perusahaan/detail/{id}', [CompanyController::class, 'show']);
+// Route::get('perusahaan/detail/{id}', [CompanyController::class, 'show']);
 
-Route::resource('detail', ItemController::class);
+Route::resource('perusahaan/detail', CompanyController::class);
 
 
 Route::get('/login', function () {

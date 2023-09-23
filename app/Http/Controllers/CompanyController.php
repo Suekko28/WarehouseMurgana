@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Company;
+use App\Models\Item;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
@@ -81,6 +82,13 @@ class CompanyController extends Controller
     {
         //
     }
+
+    // public function item(){
+    //     $items = Item::latest()->get();
+    //     return view('company.detail', compact('items'));
+    // }
+
+  
 
 
 
