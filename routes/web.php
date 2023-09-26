@@ -33,17 +33,23 @@ Route::get('/index', function () {
 //     return view('user.component.perusahaan');
 // });
 
+
+
+
+
 Route::resource('perusahaan', CompanyController::class);
 
-Route::resource('perusahaan/detail', ItemController::class);
 
 
-// Route::resource('detail', CompanyController::class);
-
-// Route::get('perusahaan/detail/{id}', [CompanyController::class, 'show']);
 
 
-// Route::get('perusahaan/detail/', [ItemController::class, 'show']);
+
+
+
+
+
+
+
 
 
 Route::get('/login', function () {

@@ -9,9 +9,7 @@
             <div class="card p-5 shadow-md">
                 <div class="row justify-content-between">
                     <div class="col">
-                      @foreach ($data->item()->get() as $item)
-                      <h5 class="text-success fw-bold">{{ $item->name}}</h5>
-                      @endforeach
+                      <h5 class="text-success fw-bold">{{ $data->name }}</h5>
                     </div>
                     <div class="col text-right">
                         <button type="button" class="btn btn-outline-success btn-md mb-5 me-2" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-plus"></i> Barang</button>
@@ -25,11 +23,11 @@
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Input Barang</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
-                    <form action="{{ url('perusahaan')}}" method="POST">
+                    <form method="GET">
                       @csrf
                       <div class="mb-3">
                         <label for="kategori" class="form-label">Kategori Alat</label>
@@ -85,7 +83,7 @@
                     <tbody>
                       </tr>
                       <tr>
-                        @foreach ($data->item() as $item)
+                        @foreach ($data->item()->get() as $item)
                         <th scope="row">{{ $loop->iteration }}</th>
                         <td>{{$item->alat}}</td>
                         <td>{{$item->lokasi}}</td>

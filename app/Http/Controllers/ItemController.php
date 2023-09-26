@@ -5,17 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\Company;
 use App\Models\Item;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class ItemController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index($id)
+    public function index()
     {
-    
-    
         //
     }
 
@@ -53,7 +50,7 @@ class ItemController extends Controller
 
         ]);
 
-        $data = [
+        $items = [
             'alat' => $request->alat,
             'lokasi' => $request->lokasi,
             'pabrik' => $request->pabrik,
@@ -61,8 +58,8 @@ class ItemController extends Controller
             'pengesahan' => $request->pengesahan,
             'file' => $request->file
         ];
-        // $data['user_id'] = auth()->user()->id;
-        Item::create($data);
+        // $items['user_id'] = auth()->user()->id;
+        Item::create($items);
         return redirect()->to('detail')->with('success', 'Berhasil Menambahkan Data');
         //
     }
@@ -70,13 +67,10 @@ class ItemController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Company $company)
+    public function show(string $id)
     {
-        return view('company.detail', [
-            'data' => $company
-        ]);
-       
-        //
+        // $data = Company::findOrFail($id);
+        // return view('company.detail', compact('data'));
     }
 
     /**
