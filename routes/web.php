@@ -3,6 +3,7 @@
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ItemController;
 use App\Models\Company;
+use App\Models\Item;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,11 +35,15 @@ Route::get('/index', function () {
 
 Route::resource('perusahaan', CompanyController::class);
 
+Route::resource('perusahaan/detail', ItemController::class);
+
+
 // Route::resource('detail', CompanyController::class);
 
 // Route::get('perusahaan/detail/{id}', [CompanyController::class, 'show']);
 
-Route::resource('perusahaan/detail', CompanyController::class);
+
+// Route::get('perusahaan/detail/', [ItemController::class, 'show']);
 
 
 Route::get('/login', function () {

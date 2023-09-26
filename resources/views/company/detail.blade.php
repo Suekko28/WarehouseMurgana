@@ -9,7 +9,9 @@
             <div class="card p-5 shadow-md">
                 <div class="row justify-content-between">
                     <div class="col">
-                      <h5 class="text-success fw-bold">{{ $data->name }}</h5>
+                      @foreach ($data->item()->get() as $item)
+                      <h5 class="text-success fw-bold">{{ $item->name}}</h5>
+                      @endforeach
                     </div>
                     <div class="col text-right">
                         <button type="button" class="btn btn-outline-success btn-md mb-5 me-2" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-plus"></i> Barang</button>
@@ -84,7 +86,6 @@
                       </tr>
                       <tr>
                         @foreach ($data->item() as $item)
-                            
                         <th scope="row">{{ $loop->iteration }}</th>
                         <td>{{$item->alat}}</td>
                         <td>{{$item->lokasi}}</td>

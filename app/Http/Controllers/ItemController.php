@@ -2,18 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Company;
 use App\Models\Item;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ItemController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index($id)
     {
-        $data = Item::orderBy('id', 'desc')->paginate(8);
-        return view('company.detail')->with('data', $data);
+    
+    
         //
     }
 
@@ -68,8 +70,12 @@ class ItemController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Company $company)
     {
+        return view('company.detail', [
+            'data' => $company
+        ]);
+       
         //
     }
 
