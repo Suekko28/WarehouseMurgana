@@ -20,9 +20,9 @@ return new class extends Migration
             $table->string('pengesahan');
             $table->string('keterangan');
             $table->string('file');
-            $table->unsignedBigInteger('item_id');
+            $table->unsignedBigInteger('company_id');
             $table->timestamps();
-            $table->foreign('item_id')->references('id')->on('companies')->onDelete('cascade');
+            $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
         });
     }
 

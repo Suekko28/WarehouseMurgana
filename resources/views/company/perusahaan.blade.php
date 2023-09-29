@@ -16,7 +16,7 @@
             </div>   
     </div>
 
-<!-- Modal -->
+{{-- <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -44,7 +44,7 @@
     
     </div>
   </div>
-</div>
+</div> --}}
 
 @if ($errors->any())
 <div class="pt-3">
@@ -59,8 +59,6 @@
   </div>
 </div>
 @endif
-        
-       
        <div class="row justify-content-start text-center mb-5 ">
          @foreach ($data as $item)
          <div class="card mb-5 shadow rounded me-3" style="width: 18rem;">
@@ -73,6 +71,7 @@
         {{$data ->links()}}
       </div>
 
+      @include('company.create')
       
     </main>
           

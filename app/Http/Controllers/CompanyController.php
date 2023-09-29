@@ -23,6 +23,8 @@ class CompanyController extends Controller
     public function create()
     {
 
+        // return view('item.detail');
+
         //
     }
 
@@ -34,15 +36,18 @@ class CompanyController extends Controller
 
         $request->validate([
             'name' => 'required|max:20',
+            
         ],[
-            'name.required' => 'Nama Perusahaan Wajib Diisi'
+            'name.required' => 'Nama Perusahaan Wajib Diisi',
+           
+
         ]);
 
-        $data = [
-            'name' => $request->name
-        ];
+       Company::create([
+        'name' => $request->name
+       ]);
+
         // $data['user_id'] = auth()->user()->id;
-        Company::create($data);
         return redirect()->to('perusahaan')->with('success', 'Berhasil Menambahkan Data');
 
       
@@ -55,7 +60,7 @@ class CompanyController extends Controller
     public function show(string $id)
     {
         $data = Company::findOrFail($id);
-        return view('company.detail', compact('data'));
+        return view('item.detail', compact('data'));
         
         //
     }
@@ -84,10 +89,7 @@ class CompanyController extends Controller
         //
     }
 
-    // public function item(){
-    //     $items = Item::latest()->get();
-    //     return view('company.detail', compact('items'));
-    // }
+   
 
   
 
