@@ -39,20 +39,20 @@
                     <tbody>
                       </tr>
                       <tr>
-                        {{-- @foreach ($items as $item)
+                        @foreach ($data->item()->get() as $item)
                         <th scope="row">{{ $loop->iteration }}</th>
                         <td>{{$item->alat}}</td>
                         <td>{{$item->lokasi}}</td>
-                        <td>{{$item->seri}}</td>
+                        <td>{{$item->pabrik}}</td>
                         <td>{{$item->Company->name}}</td>
+                        <td>{{$item->pengesahan}}</td>
                         <td>{{$item->keterangan}}</td>
-                        <td class="btn bg-success text-white mt-1">Sisa masa berlaku 7 hari</td>
                         <td>
                           <button type="button" class="btn btn-primary mb-2"><i class=" fa fa-file">{{$item->file}}</i></button>
                           <button type="button" class="btn btn-warning mb-2"><i class=" fa fa-solid fa-pen-to-square" style="color:white;"></i></button>
                           <button type="button" class="btn btn-danger mb-2"><i class="fa fa-solid fa-trash"></i></button>    
                       </td>
-                      @endforeach --}}
+                      @endforeach
 
                       </tr>
                     </tbody>

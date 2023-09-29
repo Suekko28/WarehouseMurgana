@@ -59,6 +59,8 @@
   </div>
 </div>
 @endif
+
+
        <div class="row justify-content-start text-center mb-5 ">
          @foreach ($data as $item)
          <div class="card mb-5 shadow rounded me-3" style="width: 18rem;">

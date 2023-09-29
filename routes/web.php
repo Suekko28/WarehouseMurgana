@@ -37,7 +37,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::resource('perusahaan', CompanyController::class);
-Route::get('/perusahaan/detail/{id}', [CompanyController::class, 'show']);
+Route::resource('/perusahaan/detail/{id}', ItemController::class);
 // Route::resource('detail', ItemController::class);
 
 

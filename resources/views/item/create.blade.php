@@ -7,7 +7,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
-                    <form action="" method="POST">
+                    <form action="{{ url('perusahaan/detail/' .$data->id) }}" method="POST">
                       @csrf
                       <div class="mb-3">
                         <label for="kategori" class="form-label">Kategori Alat</label>
@@ -38,9 +38,12 @@
                         <input name="file" type="file" class="form-control w-100" id="file" accept=".pdf">
                       </div>
                       <div class="mb-3">
-                        <label for="company_id" class="form-label">File</label>
-                        <input name="company_id" type="text" class="form-control w-100" id="company_id">
+                        <label for="file" class="form-label">File</label>
+                        <input name="file" type="file" class="form-control w-100" id="file" accept=".pdf">
                       </div>
+                      
+                    
+                     
                       
                   </div>
                   <div class="modal-footer">

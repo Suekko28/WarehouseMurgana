@@ -15,7 +15,7 @@ class Company extends Model
 
     public function item(){
 
-        return $this->hasMany(Item::class , 'item_id', 'id');
+        return $this->hasMany(Item::class);
     }
 
     use HasFactory;
