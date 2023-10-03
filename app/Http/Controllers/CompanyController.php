@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Company;
+
+=======
+use App\Models\Item;
+use Illuminate\Contracts\View\View;
+
 use Illuminate\Http\Request;
 
 class CompanyController extends Controller
@@ -22,7 +27,11 @@ class CompanyController extends Controller
     public function create()
     {
 
+
         // return view('item.detail');
+
+=======
+        return view('company.perusahaan');
 
         //
     }
@@ -48,8 +57,6 @@ class CompanyController extends Controller
 
         // $data['user_id'] = auth()->user()->id;
         return redirect()->to('perusahaan')->with('success', 'Berhasil Menambahkan Data');
-
-      
         //
     }
 
@@ -59,8 +66,12 @@ class CompanyController extends Controller
     public function show(string $id)
     {
         $data = Company::findOrFail($id);
+
         return view('item.detail', compact('data'));
         
+=======
+        return view('company.detail', compact('data'));
+
         //
     }
 
