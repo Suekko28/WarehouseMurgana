@@ -11,8 +11,11 @@ class ItemController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(string $id)
     {
+
+        $data = Company::findOrFail($id);
+        return view('item.detail')->with('data', $data);
         //
     }
 
@@ -35,7 +38,9 @@ class ItemController extends Controller
             'pabrik' => 'required|max:20',
             'seri' => 'required|max:20',
             'pengesahan' => 'required|max:20',
+            'keterangan' => 'required',
             'file' => 'required',
+
 
         ],[
             'alat.required' => 'Kategori Alat Wajib Diisi',
@@ -43,6 +48,7 @@ class ItemController extends Controller
             'pabrik.required' => 'Lokasi Wajib Diisi',
             'seri.required' => 'No Seri Wajib Diisi',
             'pengesahan.required' => 'No Pengesahan Wajib Diisi',
+            'keterangan.required' => 'Keterangan Wajib Diisi',
             'file.required' => 'File Wajib Diupload'
 
 
@@ -50,18 +56,19 @@ class ItemController extends Controller
 
         ]);
 
-        $items = [
+        $data = [
             'alat' => $request->alat,
             'lokasi' => $request->lokasi,
             'pabrik' => $request->pabrik,
             'seri' => $request->seri,
             'pengesahan' => $request->pengesahan,
+            'keterangan' => $request->keterangan,
             'file' => $request->file
         ];
-        // $items['user_id'] = auth()->user()->id;
-        Item::create($items);
+        // $data['user_id'] = auth()->user()->id;
+        Item::create($data);
         return redirect()->to('detail')->with('success', 'Berhasil Menambahkan Data');
-        //
+        
     }
 
     /**
@@ -69,8 +76,7 @@ class ItemController extends Controller
      */
     public function show(string $id)
     {
-        // $data = Company::findOrFail($id);
-        // return view('company.detail', compact('data'));
+     
     }
 
     /**

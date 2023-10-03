@@ -2,8 +2,7 @@
 
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ItemController;
-use App\Models\Company;
-use App\Models\Item;
+use App\Http\Controllers\ItemsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,17 +16,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('dashboard');
-});
+// Route::get('/', function () {
+//     return view('dashboard');
+// });
 
-Route::get('/create', function () {
-    return view('user.create');
-});
+// Route::get('/create', function () {
+//     return view('user.create');
+// });
 
-Route::get('/index', function () {
-    return view('user.index');
-});
+// Route::get('/index', function () {
+//     return view('user.index');
+// });
 
 // Route::get('/perusahaan', function () {
 //     return view('user.component.perusahaan');
@@ -38,32 +37,26 @@ Route::get('/index', function () {
 
 
 Route::resource('perusahaan', CompanyController::class);
+Route::resource('/perusahaan/detail/{id}', ItemController::class);
+// Route::resource('detail', ItemController::class);
 
 
+// // Route::get('perusahaan', [CompanyController::class, 'index'])->name('perusahaan');
+// Route::get('perusahaan/detail/{id}', [ItemController::class, 'show'])->name('item.detail');
 
 
+// Route::get('/login', function () {
+//     return view('auth.login');
+// });
 
+// Route::get('/detail', function () {
+//     return view('company.detail');
+// });
 
+// Route::get('/pengguna', function () {
+//     return view('user.pengguna');
+// });
 
-
-
-
-
-
-
-
-Route::get('/login', function () {
-    return view('auth.login');
-});
-
-Route::get('/detail', function () {
-    return view('company.detail');
-});
-
-Route::get('/pengguna', function () {
-    return view('user.pengguna');
-});
-
-Route::get('/peralatan', function () {
-    return view('user.peralatan');
-});
+// Route::get('/peralatan', function () {
+//     return view('user.peralatan');
+// });

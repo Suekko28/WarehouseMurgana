@@ -18,6 +18,10 @@
                     </div>   
             </div>
 
+
+            @include('item.create')
+
+=======
             <!-- Modal -->
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog">
@@ -65,6 +69,7 @@
               </div>
             </div>
 
+
             <div class="table-responsive">
                 <table class="table table-bordered text-center">
                     <caption>List of users</caption>
@@ -88,9 +93,15 @@
                         <td>{{$item->alat}}</td>
                         <td>{{$item->lokasi}}</td>
                         <td>{{$item->pabrik}}</td>
+
+                        <td>{{$item->Company->name}}</td>
+                        <td>{{$item->pengesahan}}</td>
+                        <td>{{$item->keterangan}}</td>
+=======
                         <td>{{$item->seri}}</td>
                         <td>{{$item->pengesahan}}</td>
                         <td class="btn bg-success text-white mt-1">Sisa masa berlaku 7 hari</td>
+
                         <td>
                           <button type="button" class="btn btn-primary mb-2"><i class=" fa fa-file">{{$item->file}}</i></button>
                           <button type="button" class="btn btn-warning mb-2"><i class=" fa fa-solid fa-pen-to-square" style="color:white;"></i></button>

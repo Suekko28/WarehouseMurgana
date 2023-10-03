@@ -14,12 +14,13 @@ class Item extends Model
         'seri',
         'pengesahan',
         'keterangan',
+        'company_id',
         'file',
     ];
     protected $primaryKey = "id";
     protected $table = 'items';
 
-    public function company(){
+    public function Company(){
         return $this->belongsTo(Company::class);
     }
 
