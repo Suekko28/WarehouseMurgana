@@ -5,6 +5,7 @@ use App\Http\Controllers\ItemController;
 use App\Http\Controllers\ItemsController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,7 @@ use App\Http\Controllers\CompanyController;
 
 //auth route
 Route::post('/logout',[LoginController::Class,'logout']);
+Route::get('/logout',[LoginController::Class,'logout']);
 Route::get('/login', function () {
     return view('auth.login');
 })->middleware('guest');
@@ -27,16 +29,14 @@ Route::post('/login',[LoginController::Class,'authenticate']);
 Route::get('/', function () {
     return view('dashboard');
 });
-Route::get('/dashboard', function () {
-    return view('dashboard');
-});
+Route::get('/dashboard',[DashboardController::Class,'index']);
 
 
 
 
-Route::get('/create', function () {
-    return view('user.create');
-});
+// Route::get('/create', function () {
+//     return view('user.create');
+// });
 
 // Route::get('/index', function () {
 //     return view('user.index');

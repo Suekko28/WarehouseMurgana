@@ -7,6 +7,10 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
+    
+    public function __construct(){
+        $this->middleware('guest')->except('logout');
+    }
     public function authenticate(Request $request){
         $creds=$request->validate([
             'email'=>'required | email:dns',
@@ -15,6 +19,7 @@ class LoginController extends Controller
         
         if(Auth::attempt($creds)){
             $request->session()->regenerate();
+            $user=auth()->user();
             return redirect()->intended('/dashboard');
         }
         return back()->with('LoginError','Invalid Credentials');

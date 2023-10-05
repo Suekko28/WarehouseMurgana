@@ -96,9 +96,11 @@
             <button class="btn btn-outline-success fa fa-solid fa-magnifying-glass" type="submit"></button>
           </form>
           <ul class="navbar-nav">
+            @if(auth()->user()!=null)
             <li class="nav-item dropdown me-2">
+              
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Admin
+                {{auth()->user()->name}}
               </a>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item text-muted disabled" href="#">Welcome ! </a></li>
@@ -111,6 +113,11 @@
                 </li>
               </ul>
             </li>
+            @else
+            <a class="nav-link" href="/login" role="button" aria-expanded="false">
+                Log in
+            </a>
+            @endif
           </ul>
         </div>
       </div>
