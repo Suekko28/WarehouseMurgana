@@ -38,9 +38,9 @@ Route::get('/dashboard',[DashboardController::Class,'index']);
 //     return view('user.create');
 // });
 
-// Route::get('/index', function () {
-//     return view('user.index');
-// });
+Route::get('/index', function () {
+    return view('user.pengguna');
+});
 
 // Route::get('/perusahaan', function () {
 //     return view('user.component.perusahaan');
@@ -50,7 +50,7 @@ Route::get('/dashboard',[DashboardController::Class,'index']);
 
 
 
-Route::resource('perusahaan', CompanyController::class);
+Route::resource('/perusahaan', CompanyController::class);
 Route::resource('/perusahaan/detail/{id}', ItemController::class);
 // Route::resource('detail', ItemController::class);
 

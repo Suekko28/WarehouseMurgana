@@ -114,7 +114,7 @@
               </ul>
             </li>
             @else
-            <a class="nav-link" href="/login" role="button" aria-expanded="false">
+            <a class="nav-link btn btn-success"  href="/login" role="button" aria-expanded="false">
                 Log in
             </a>
             @endif
