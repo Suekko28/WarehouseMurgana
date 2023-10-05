@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Company;
-
-=======
 use App\Models\Item;
 use Illuminate\Contracts\View\View;
 
@@ -30,7 +28,6 @@ class CompanyController extends Controller
 
         // return view('item.detail');
 
-=======
         return view('company.perusahaan');
 
         //
@@ -69,7 +66,6 @@ class CompanyController extends Controller
 
         return view('item.detail', compact('data'));
         
-=======
         return view('company.detail', compact('data'));
 
         //

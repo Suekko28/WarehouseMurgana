@@ -21,7 +21,6 @@
 
             @include('item.create')
 
-=======
             <!-- Modal -->
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog">
@@ -97,7 +96,6 @@
                         <td>{{$item->Company->name}}</td>
                         <td>{{$item->pengesahan}}</td>
                         <td>{{$item->keterangan}}</td>
-=======
                         <td>{{$item->seri}}</td>
                         <td>{{$item->pengesahan}}</td>
                         <td class="btn bg-success text-white mt-1">Sisa masa berlaku 7 hari</td>
@@ -118,12 +116,6 @@
         </div>
             </div>
           </div>
-
-        
-     
-          
-
-      
     </main>
           
 @endsection
