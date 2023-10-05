@@ -102,7 +102,13 @@
               </a>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item text-muted disabled" href="#">Welcome ! </a></li>
-                <li><a class="dropdown-item" href="#">Log out</a></li>
+                <li>
+                  <form action="/logout" method="post" >
+                  @csrf
+                  <!-- <a class="dropdown-item" href="#">Log out</a> -->
+                    <button type="submit" class="dropdown-item">Log out</button>
+                  </form>
+                </li>
               </ul>
             </li>
           </ul>

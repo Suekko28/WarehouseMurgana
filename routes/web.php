@@ -17,19 +17,26 @@ use App\Http\Controllers\CompanyController;
 |
 */
 
+//auth route
+Route::post('/logout',[LoginController::Class,'logout']);
+Route::get('/login', function () {
+    return view('auth.login');
+})->middleware('guest');
+Route::post('/login',[LoginController::Class,'authenticate']);
+
 Route::get('/', function () {
     return view('dashboard');
 });
-Route::get('/login', function () {
-    return view('auth.login');
-});
-Route::post('/login',[LoginController::Class,'authenticate']);
 Route::get('/dashboard', function () {
     return view('dashboard');
 });
-// Route::get('/create', function () {
-//     return view('user.create');
-// });
+
+
+
+
+Route::get('/create', function () {
+    return view('user.create');
+});
 
 // Route::get('/index', function () {
 //     return view('user.index');
