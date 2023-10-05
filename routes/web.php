@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\CompanyController;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\ItemsController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\CompanyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,10 +17,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('dashboard');
-// });
-
+Route::get('/', function () {
+    return view('dashboard');
+});
+Route::get('/login', function () {
+    return view('auth.login');
+});
+Route::post('/login',[LoginController::Class,'authenticate']);
 // Route::get('/create', function () {
 //     return view('user.create');
 // });
@@ -45,9 +49,6 @@ Route::resource('/perusahaan/detail/{id}', ItemController::class);
 // Route::get('perusahaan/detail/{id}', [ItemController::class, 'show'])->name('item.detail');
 
 
-// Route::get('/login', function () {
-//     return view('auth.login');
-// });
 
 // Route::get('/detail', function () {
 //     return view('company.detail');
