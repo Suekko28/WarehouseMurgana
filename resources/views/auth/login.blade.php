@@ -54,6 +54,11 @@
                                         <p class="text-muted mt-1 mb-4">
                                             Silahkan login terlebih dahulu untuk melanjutkan
                                         </p>
+                                        @if(session()->has('LoginError'))
+                                        <div class="alert alert-danger" role="alert">
+                                            Invalid Credentials
+                                        </div>
+                                        @endif
                                         <form action="/login" method="post" class="authentication-form" >
                                             @csrf
                                             <div class="mb-3">

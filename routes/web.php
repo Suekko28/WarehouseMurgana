@@ -24,6 +24,9 @@ Route::get('/login', function () {
     return view('auth.login');
 });
 Route::post('/login',[LoginController::Class,'authenticate']);
+Route::get('/dashboard', function () {
+    return view('dashboard');
+});
 // Route::get('/create', function () {
 //     return view('user.create');
 // });
