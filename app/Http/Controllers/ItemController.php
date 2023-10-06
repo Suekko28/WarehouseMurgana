@@ -32,14 +32,23 @@ class ItemController extends Controller
      */
     public function store(Request $request)
     {
+        // $file = $request;
+        // dd($file);
+
+        
+
         $request->validate([
+
             'alat' => 'required|max:20',
             'lokasi' => 'required|max:20',
             'pabrik' => 'required|max:20',
             'seri' => 'required|max:20',
             'pengesahan' => 'required|max:20',
-            'keterangan' => 'required',
-            'file' => 'required',
+            'file' => 'required||mimes:pdf',
+            'tgl_msk' => 'required',
+            'tgl_klr' => 'required',
+            'company_id' => 'required',
+
 
 
         ],[
@@ -48,13 +57,22 @@ class ItemController extends Controller
             'pabrik.required' => 'Lokasi Wajib Diisi',
             'seri.required' => 'No Seri Wajib Diisi',
             'pengesahan.required' => 'No Pengesahan Wajib Diisi',
-            'keterangan.required' => 'Keterangan Wajib Diisi',
-            'file.required' => 'File Wajib Diupload'
+            'file.required' => 'File Wajib Diupload',   
+            'tgl_msk.required' => 'File Wajib Diupload',   
+            'tgl_klr.required' => 'File Wajib Diupload',   
+            'company_id.required' => 'File Wajib Diupload'
+
 
 
 
 
         ]);
+
+        $file = $request->file('file');
+        $tujuan_upload = 'data_file';
+        $file->move($tujuan_upload,$file->getClientOriginalName());
+       
+
 
         $data = [
             'alat' => $request->alat,
@@ -62,12 +80,15 @@ class ItemController extends Controller
             'pabrik' => $request->pabrik,
             'seri' => $request->seri,
             'pengesahan' => $request->pengesahan,
-            'keterangan' => $request->keterangan,
-            'file' => $request->file
+            'tgl_msk' => $request->tgl_msk,
+            'tgl_klr' => $request->tgl_klr,
+            'file' => $request->file->getClientOriginalName(),
+            'company_id' => $request->company_id,
         ];
         // $data['user_id'] = auth()->user()->id;
         Item::create($data);
-        return redirect()->to('detail')->with('success', 'Berhasil Menambahkan Data');
+        return $this->index($request->company_id);
+        // return redirect()->route('perusahaan.index', ['id' => $request->company_id])->with('success', 'Berhasil Menambahkan Data');
         
     }
 
