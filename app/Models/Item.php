@@ -13,7 +13,8 @@ class Item extends Model
         'pabrik',
         'seri',
         'pengesahan',
-        'keterangan',
+        'tgl_msk',
+        'tgl_klr',
         'company_id',
         'file',
     ];

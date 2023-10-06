@@ -7,7 +7,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
-                    <form action="{{ url('perusahaan/detail/' .$data->id) }}" method="POST">
+                    <form action="{{ url('perusahaan/detail/' .$data->id) }}" method="post" enctype="multipart/form-data">
                       @csrf
                       <div class="mb-3">
                         <label for="kategori" class="form-label">Kategori Alat</label>
@@ -30,20 +30,21 @@
                         <input name="pengesahan" type="text" class="form-control w-100" id="pengesahan">
                       </div>
                       <div class="mb-3">
-                        <label for="keterangan" class="form-label">Keterangan</label>
-                        <input name="keterangan" type="text" class="form-control w-100" id="keterangan">
+                        <label for="tgl_msk" class="form-label">Tanggal Masuk</label>
+                        <input name="tgl_msk" type="date" class="form-control w-100" id="tgl_msk">
+                      </div>
+                      <div class="mb-3">
+                        <label for="tgl_klr" class="form-label">Tanggal Keluar</label>
+                        <input name="tgl_klr" type="date" class="form-control w-100" id="tgl_klr">
                       </div>
                       <div class="mb-3">
                         <label for="file" class="form-label">File</label>
                         <input name="file" type="file" class="form-control w-100" id="file" accept=".pdf">
                       </div>
                       <div class="mb-3">
-                        <label for="file" class="form-label">File</label>
-                        <input name="file" type="file" class="form-control w-100" id="file" accept=".pdf">
+                        <input value="{{$data->id}}" name="company_id" type="hidden" class="form-control w-100" id="file">
                       </div>
-                      
                     
-                     
                       
                   </div>
                   <div class="modal-footer">
