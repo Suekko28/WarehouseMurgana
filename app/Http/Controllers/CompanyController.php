@@ -2,23 +2,36 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Company;
-
-=======
 use App\Models\Item;
-use Illuminate\Contracts\View\View;
-
+use App\Models\Company;
 use Illuminate\Http\Request;
+
+use Illuminate\Contracts\View\View;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Http;
+use App\Http\Controllers\ItemController;
 
 class CompanyController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
+    public function __construct(){
+        $this->middleware('auth');
+    }
     public function index()
     {
+        $user = auth()->user();
+        if(auth()->user()->role == 1){
         $data = Company::orderBy('id', 'desc')->paginate(8);
         return view('company.perusahaan')->with('data', $data);
+        }
+        else{
+            $company_id=auth()->user()->company_id;
+            $items= new ItemController();
+            $result = $items->index($company_id);
+            return $result;
+        }
     }
 
     /**
@@ -30,7 +43,7 @@ class CompanyController extends Controller
 
         // return view('item.detail');
 
-=======
+
         return view('company.perusahaan');
 
         //
@@ -69,7 +82,7 @@ class CompanyController extends Controller
 
         return view('item.detail', compact('data'));
         
-=======
+
         return view('company.detail', compact('data'));
 
         //
