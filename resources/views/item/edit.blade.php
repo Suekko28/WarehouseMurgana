@@ -12,7 +12,7 @@
                       @method('PUT')
                       <div class="mb-3">
                         <label for="alat" class="form-label">Kategori Alat</label>
-                        <input name="alat" type="text" class="form-control w-100" id="alat" aria-describedby="name" >
+                        <input name="alat" type="text" class="form-control w-100" id="alat" aria-describedby="name" value="">
                       </div>
                       <div class="mb-3">
                         <label for="lokasi" class="form-label">Lokasi</label>

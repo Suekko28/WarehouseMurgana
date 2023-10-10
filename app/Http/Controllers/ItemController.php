@@ -60,20 +60,10 @@ class ItemController extends Controller
 
         ]);
         
-
-
-
-
-
-     
-
         $file = $request->file('file');
         $tujuan_upload = 'data_file';
         $file->move($tujuan_upload,$file->getClientOriginalName());
-       
-
-
-
+        
         $data = [
             'alat' => $request->alat,
             'lokasi' => $request->lokasi,
