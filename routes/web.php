@@ -19,16 +19,17 @@ use App\Http\Controllers\DashboardController;
 */
 
 //auth route
-Route::post('/logout',[LoginController::class,'logout']);
+Route::post('/logout',[LoginController::Class,'logout']);
+Route::get('/logout',[LoginController::Class,'logout']);
 Route::get('/login', function () {
     return view('auth.login');
 })->middleware('guest');
-Route::post('/login',[LoginController::class,'authenticate']);
+Route::post('/login',[LoginController::Class,'authenticate']);
 
 Route::get('/', function () {
     return view('dashboard');
 });
-Route::get('/dashboard',[DashboardController::class,'index']);
+Route::get('/dashboard',[DashboardController::Class,'index']);
 
 
 
