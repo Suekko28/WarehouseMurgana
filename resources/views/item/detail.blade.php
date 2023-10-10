@@ -13,21 +13,12 @@
                     </div>
                     <div class="col text-right">
                         <button type="button" class="btn btn-outline-success btn-md mb-5" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-plus"></i> Barang</button>
-
                         <button type="button" class="btn btn-outline-danger btn-md mb-5" ><i class="fa-solid fa-file-import"></i> Import</button>
-
-                        <button type="button" class="btn btn-outline-danger btn-md mb-5"><i class="fa-solid fa-file-import"></i> Import</button>
-
                         <button type="button" class="btn btn-outline-primary btn-md mb-5 "><i class="fa-solid fa-download"></i> Download</button>
                     </div>   
             </div>
 
-
             
-
-
-            @include('item.create')
-
             <!-- Modal -->
             {{-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog">
@@ -75,7 +66,6 @@
               </div>
             </div> --}}
 
-
             
             <div class="table-responsive">
                 <table class="table table-auto table-bordered text-center">
@@ -90,11 +80,7 @@
                         <th scope="col">No.Pengesahan</th>
                         <th scope="col">Tanggal Masuk</th>
                         <th scope="col">Tanggal Keluar</th>
-
                         <th scope="col">Keterangan</th>
-
-                        {{-- <th scope="col">Keterangan</th> --}}
-
                         <th scope="col">Aksi</th>
                       </tr>
                     </thead>
@@ -113,7 +99,6 @@
                         <td>{{$item->alat}}</td>
                         <td>{{$item->lokasi}}</td>
                         <td>{{$item->pabrik}}</td>
-
                         <td>{{$item->seri}}</td>
                         <td>{{$item->pengesahan}}</td>
                         <td>{{$item->tgl_msk}}</td>
@@ -122,16 +107,6 @@
                         <td>
                           <a href="{{ route('file.open',['file'=>$item->file]) }}" target="_blank"><button type="button" class="btn btn-primary mb-2"><i class=" fa fa-file"></i></button></a>
                           <button type="button" onclick="keluarkan({{$loop->iteration}},{{$data->id}},{{$data->file}})" id="btn-edit" class="btn btn-warning mb-2" data-bs-toggle="modal" data-bs-target="#editModal"><i class=" fa fa-solid fa-pen-to-square" style="color:white;"></i></button>
-
-                        <td>{{$item->pengesahan}}</td>
-                        {{-- <td>{{$item->keterangan}}</td> --}}
-                        <td>{{$item->seri}}</td>
-                        <td>{{$item->tgl_msk}}</td>
-                        <td>{{$item->tgl_klr}}</td>
-                        <td>
-                          <a href="{{ Storage::url('../public/data_file/' .$item->file) }}" target="_blank"><button type="button" class="btn btn-primary mb-2"><i class=" fa fa-file"></i></button></a>
-                          <button type="button" class="btn btn-warning mb-2"><i class=" fa fa-solid fa-pen-to-square" style="color:white;"></i></button>
-
                           <button type="button" class="btn btn-danger mb-2"><i class="fa fa-solid fa-trash"></i></button>    
                       </td>
 

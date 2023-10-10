@@ -34,9 +34,7 @@ class ItemController extends Controller
     {
         // $file = $request;
         // dd($file);
-
         $request->validate([
-
             'alat' => 'required|max:20',
             'lokasi' => 'required|max:20',
             'pabrik' => 'required|max:20',
@@ -46,7 +44,6 @@ class ItemController extends Controller
             'tgl_msk' => 'required',
             'tgl_klr' => 'required',
             'company_id' => 'required',
-
         ],[
             'alat.required' => 'Kategori Alat Wajib Diisi',
             'lokasi.required' => 'Lokasi Wajib Diisi',
@@ -57,9 +54,9 @@ class ItemController extends Controller
             'tgl_msk.required' => 'File Wajib Diupload',   
             'tgl_klr.required' => 'File Wajib Diupload',   
             'company_id.required' => 'File Wajib Diupload'
-
         ]);
         
+
 
 
 
@@ -71,6 +68,7 @@ class ItemController extends Controller
         $tujuan_upload = 'data_file';
         $file->move($tujuan_upload,$file->getClientOriginalName());
        
+
 
 
 
@@ -88,16 +86,12 @@ class ItemController extends Controller
         // $data['user_id'] = auth()->user()->id;
         //storing into query
         Item::create($data);
-
         //storing file
         $store_file=new FileController();
         $tujuan_upload = 'data_file';
         $store_file->store($tujuan_upload,$request->file('file'));
 
         return redirect()->back()->with('status','Student Uploaded Successfully');
-
-        return $this->index($request->company_id);
-
         // return redirect()->route('perusahaan.index', ['id' => $request->company_id])->with('success', 'Berhasil Menambahkan Data');
         
     }
