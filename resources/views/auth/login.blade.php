@@ -54,14 +54,20 @@
                                         <p class="text-muted mt-1 mb-4">
                                             Silahkan login terlebih dahulu untuk melanjutkan
                                         </p>
-                                        <form action="#" class="authentication-form">
+                                        @if(session()->has('LoginError'))
+                                        <div class="alert alert-danger" role="alert">
+                                            Invalid Credentials
+                                        </div>
+                                        @endif
+                                        <form action="/login" method="post" class="authentication-form" >
+                                            @csrf
                                             <div class="mb-3">
                                                 <label class="form-label">Email Address</label>
                                                 <div class="input-group">
                                                     <span class="input-group-text">
                                                         <i class="icon-dual" data-feather="mail"></i>
                                                     </span>
-                                                    <input type="email" class="form-control" id="email" placeholder="hello@coderthemes.com">
+                                                    <input type="email" name="email" class="form-control" id="email" placeholder="hello@coderthemes.com" autofocus required>
                                                 </div>
                                             </div>
 
@@ -71,7 +77,7 @@
                                                     <span class="input-group-text">
                                                         <i class="icon-dual" data-feather="lock"></i>
                                                     </span>
-                                                    <input type="password" class="form-control" id="password" placeholder="Enter your password">
+                                                    <input type="password" name="password" class="form-control" id="password" placeholder="Enter your password" required>
                                                 </div>
                                             </div>
 
