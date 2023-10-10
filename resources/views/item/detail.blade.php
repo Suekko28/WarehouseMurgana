@@ -97,10 +97,9 @@
                       </tr>
                     </thead>
                     <tbody>
-                      </tr>
                       
+                      <tr>
                         @foreach ($data->item()->get() as $item)
-                        <tr>
                         @php
                           $waktu_now=$item->tgl_msk;
                           $date1=new DateTime($item->tgl_klr);
@@ -111,7 +110,6 @@
                         <td>{{$item->alat}}</td>
                         <td>{{$item->lokasi}}</td>
                         <td>{{$item->pabrik}}</td>
-
                         <td>{{$item->seri}}</td>
                         <td>{{$item->pengesahan}}</td>
                         <td>{{$item->tgl_msk}}</td>
@@ -120,17 +118,7 @@
                         <td>
                           <a href="{{ route('file.open',['file'=>$item->file]) }}" target="_blank"><button type="button" class="btn btn-primary mb-2"><i class=" fa fa-file"></i></button></a>
                           <button type="button" onclick="keluarkan({{$loop->iteration}},{{$data->id}},{{$data->file}})" id="btn-edit" class="btn btn-warning mb-2" data-bs-toggle="modal" data-bs-target="#editModal"><i class=" fa fa-solid fa-pen-to-square" style="color:white;"></i></button>
-
-                        <td>{{$item->pengesahan}}</td>
-                        {{-- <td>{{$item->keterangan}}</td> --}}
-                        <td>{{$item->seri}}</td>
-                        <td>{{$item->tgl_msk}}</td>
-                        <td>{{$item->tgl_klr}}</td>
-                        <td>
-                          <a href="{{ Storage::url('../public/data_file/' .$item->file) }}" target="_blank"><button type="button" class="btn btn-primary mb-2"><i class=" fa fa-file"></i></button></a>
-                          <button type="button" class="btn btn-warning mb-2"><i class=" fa fa-solid fa-pen-to-square" style="color:white;"></i></button>
-
-                          <button type="button" class="btn btn-danger mb-2"><i class="fa fa-solid fa-trash"></i></button>    
+                          <button type="button" class="btn btn-danger mb-2"><i class="fa fa-solid fa-trash"></i></button>
                       </td>
 
                     </tr>
