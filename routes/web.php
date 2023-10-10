@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FileController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\ItemsController;
 use App\Http\Controllers\LoginController;
@@ -19,16 +20,23 @@ use App\Http\Controllers\DashboardController;
 */
 
 //auth route
-Route::post('/logout',[LoginController::class,'logout']);
+
+
 Route::get('/login', function () {
     return view('auth.login');
 })->middleware('guest');
 Route::post('/login',[LoginController::class,'authenticate']);
-
-Route::get('/', function () {
-    return view('dashboard');
+Route::middleware(['auth'])->group(function(){
+    Route::post('/logout',[LoginController::class,'logout']); 
+    Route::get('/', function () {
+        return view('dashboard');
+    });
+    Route::get('/dashboard',[DashboardController::class,'index']);
+    Route::get('/assets',[FileController::class,'open'])->name('file.open');
+    Route::resource('/perusahaan', CompanyController::class);
+    Route::resource('/perusahaan/detail', ItemController::class);
 });
-Route::get('/dashboard',[DashboardController::class,'index']);
+
 
 
 
@@ -49,8 +57,7 @@ Route::get('/index', function () {
 
 
 
-Route::resource('/perusahaan', CompanyController::class);
-Route::resource('/perusahaan/detail/{id}', ItemController::class);
+
 // Route::resource('detail', ItemController::class);
 
 
