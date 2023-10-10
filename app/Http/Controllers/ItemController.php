@@ -56,6 +56,22 @@ class ItemController extends Controller
             'company_id.required' => 'File Wajib Diupload'
         ]);
         
+
+
+
+
+
+
+    
+
+        $file = $request->file('file');
+        $tujuan_upload = 'data_file';
+        $file->move($tujuan_upload,$file->getClientOriginalName());
+       
+
+
+
+
         $data = [
             'alat' => $request->alat,
             'lokasi' => $request->lokasi,
