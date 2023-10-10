@@ -13,10 +13,17 @@
                     </div>
                     <div class="col text-right">
                         <button type="button" class="btn btn-outline-success btn-md mb-5" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-plus"></i> Barang</button>
+
+                        <button type="button" class="btn btn-outline-danger btn-md mb-5" ><i class="fa-solid fa-file-import"></i> Import</button>
+
                         <button type="button" class="btn btn-outline-danger btn-md mb-5"><i class="fa-solid fa-file-import"></i> Import</button>
+
                         <button type="button" class="btn btn-outline-primary btn-md mb-5 "><i class="fa-solid fa-download"></i> Download</button>
                     </div>   
             </div>
+
+
+            
 
 
             @include('item.create')
@@ -33,8 +40,8 @@
                     <form method="POST">
                       @csrf
                       <div class="mb-3">
-                        <label for="kategori" class="form-label">Kategori Alat</label>
-                        <input name="alat" type="text" class="form-control w-100" id="kategori" aria-describedby="name" value="">
+                        <label for="alat" class="form-label">Kategori Alat</label>
+                        <input name="alat" type="text" class="form-control w-100" id="alat" aria-describedby="name" value="">
                       </div>
                       <div class="mb-3">
                         <label for="lokasi" class="form-label">Lokasi</label>
@@ -69,6 +76,7 @@
             </div> --}}
 
 
+            
             <div class="table-responsive">
                 <table class="table table-auto table-bordered text-center">
                     <caption>List of users</caption>
@@ -82,18 +90,39 @@
                         <th scope="col">No.Pengesahan</th>
                         <th scope="col">Tanggal Masuk</th>
                         <th scope="col">Tanggal Keluar</th>
+
+                        <th scope="col">Keterangan</th>
+
                         {{-- <th scope="col">Keterangan</th> --}}
+
                         <th scope="col">Aksi</th>
                       </tr>
                     </thead>
                     <tbody>
                       </tr>
-                      <tr>
+                      
                         @foreach ($data->item()->get() as $item)
+                        <tr>
+                        @php
+                          $waktu_now=$item->tgl_msk;
+                          $date1=new DateTime($item->tgl_klr);
+                          $date2=new DateTime();
+                          $keterangan=$date1->diff($date2);
+                        @endphp
                         <th scope="row">{{ $loop->iteration }}</th>
                         <td>{{$item->alat}}</td>
                         <td>{{$item->lokasi}}</td>
                         <td>{{$item->pabrik}}</td>
+
+                        <td>{{$item->seri}}</td>
+                        <td>{{$item->pengesahan}}</td>
+                        <td>{{$item->tgl_msk}}</td>
+                        <td>{{$item->tgl_klr}}</td>
+                        <td>{{$keterangan->format('%d hari')}}</td>
+                        <td>
+                          <a href="{{ route('file.open',['file'=>$item->file]) }}" target="_blank"><button type="button" class="btn btn-primary mb-2"><i class=" fa fa-file"></i></button></a>
+                          <button type="button" onclick="keluarkan({{$loop->iteration}},{{$data->id}},{{$data->file}})" id="btn-edit" class="btn btn-warning mb-2" data-bs-toggle="modal" data-bs-target="#editModal"><i class=" fa fa-solid fa-pen-to-square" style="color:white;"></i></button>
+
                         <td>{{$item->pengesahan}}</td>
                         {{-- <td>{{$item->keterangan}}</td> --}}
                         <td>{{$item->seri}}</td>
@@ -102,6 +131,7 @@
                         <td>
                           <a href="{{ Storage::url('../public/data_file/' .$item->file) }}" target="_blank"><button type="button" class="btn btn-primary mb-2"><i class=" fa fa-file"></i></button></a>
                           <button type="button" class="btn btn-warning mb-2"><i class=" fa fa-solid fa-pen-to-square" style="color:white;"></i></button>
+
                           <button type="button" class="btn btn-danger mb-2"><i class="fa fa-solid fa-trash"></i></button>    
                       </td>
 
@@ -118,5 +148,6 @@
         </div>
           </div>
     </main>
-          
+    @include('item.edit')
+    @include('item.create')
 @endsection

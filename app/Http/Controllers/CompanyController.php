@@ -16,9 +16,6 @@ class CompanyController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function __construct(){
-        $this->middleware('auth');
-    }
     public function index()
     {
         $user = auth()->user();
@@ -29,7 +26,7 @@ class CompanyController extends Controller
         else{
             $company_id=auth()->user()->company_id;
             $items= new ItemController();
-            $result = $items->index($company_id);
+            $result = $items->show($company_id);
             return $result;
         }
     }

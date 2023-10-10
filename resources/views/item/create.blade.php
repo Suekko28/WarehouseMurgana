@@ -7,11 +7,15 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
+
+                    <form action="/perusahaan/detail" method="post" enctype="multipart/form-data">
+
                     <form action="{{ url('perusahaan/detail/' .$data->id) }}" method="post" enctype="multipart/form-data">
+
                       @csrf
                       <div class="mb-3">
-                        <label for="kategori" class="form-label">Kategori Alat</label>
-                        <input name="alat" type="text" class="form-control w-100" id="kategori" aria-describedby="name" value="">
+                        <label for="alat" class="form-label">Kategori Alat</label>
+                        <input name="alat" type="text" class="form-control w-100" id="alat" aria-describedby="name" value="">
                       </div>
                       <div class="mb-3">
                         <label for="lokasi" class="form-label">Lokasi</label>

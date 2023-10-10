@@ -73,30 +73,31 @@
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="/">
           <img src="/template/logo_murgana.png" alt="Logo Murgana" width="60" height="60">
         </a>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item me-2">
-              <a class="nav-link active" aria-current="page" href="#">Beranda</a>
+              <a class="nav-link active" aria-current="page" href="/">Beranda</a>
             </li>
             <li class="nav-item me-2">
-              <a class="nav-link" href="#">Perusahaan</a>
+              <a class="nav-link" href="/perusahaan">Perusahaan</a>
             </li>
+            @if(auth()->user()->role==1)
             <li class="nav-item me-2">
               <a class="nav-link" href="#">Pengguna</a>
             </li>
             <li class="nav-item me-2">
               <a class="nav-link" href="#">Peralatan</a>
             </li>
+            @endif
           </ul>
           <form class="d-flex" role="search" id="formSearch">
             <input class="form-control me-2 rounded-pill  p-2" type="search" placeholder="Cari Disini" aria-label="Search">
             <button class="btn btn-outline-success fa fa-solid fa-magnifying-glass" type="submit"></button>
           </form>
           <ul class="navbar-nav">
-            @if(auth()->user()!=null)
             <li class="nav-item dropdown me-2">
               
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -113,11 +114,6 @@
                 </li>
               </ul>
             </li>
-            @else
-            <a class="nav-link btn btn-success"  href="/login" role="button" aria-expanded="false">
-                Log in
-            </a>
-            @endif
           </ul>
         </div>
       </div>
@@ -126,7 +122,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
-<script src="/js/index.js"></script>
+<!-- <script src="/js/index.js"></script> -->
 <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/fontawesome.js" integrity="sha384-dPBGbj4Uoy1OOpM4+aRGfAOc0W37JkROT+3uynUgTHZCHZNMHfGXsmmvYTffZjYO" crossorigin="anonymous"></script>
   </body>
 

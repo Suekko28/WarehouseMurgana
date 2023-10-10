@@ -16,7 +16,10 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
         Company::factory()->create([
-            'name'=>'susu_kambing_jantan',
+            'name'=>'PT.Susu Kambing Jantan',
+        ]);
+        Company::factory()->create([
+            'name'=>'PT.Susu Kambing Betina',
         ]);
         User::factory()->create([
             'name' => 'james',
@@ -24,6 +27,13 @@ class DatabaseSeeder extends Seeder
             'password'=>'123',
             'role'=>'2',
             'company_id'=>'1',
+        ]);
+        User::factory()->create([
+            'name' => 'rudy',
+            'email' => 'test2@test.com',
+            'password'=>'123',
+            'role'=>'2',
+            'company_id'=>'2',
         ]);
         User::factory()->create([
             'name' => 'sa-admin',
