@@ -65,7 +65,7 @@ class ItemController extends Controller
 
 
 
-        ]);
+    
 
         $file = $request->file('file');
         $tujuan_upload = 'data_file';
