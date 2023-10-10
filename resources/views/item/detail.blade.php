@@ -14,8 +14,6 @@
                     <div class="col text-right">
                         <button type="button" class="btn btn-outline-success btn-md mb-5" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-plus"></i> Barang</button>
 
-                        <button type="button" class="btn btn-outline-danger btn-md mb-5" ><i class="fa-solid fa-file-import"></i> Import</button>
-
                         <button type="button" class="btn btn-outline-danger btn-md mb-5"><i class="fa-solid fa-file-import"></i> Import</button>
 
                         <button type="button" class="btn btn-outline-primary btn-md mb-5 "><i class="fa-solid fa-download"></i> Download</button>
