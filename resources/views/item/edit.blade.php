@@ -42,9 +42,6 @@
                         <label for="file" class="form-label">File</label>
                         <input name="file" type="file" class="form-control w-100" id="file" accept=".pdf">
                       </div>
-                      <div class="mb-3">
-                        <input name="company_id" type="hidden" class="form-control w-100" id="file">
-                      </div>
                     
                       
                   </div>
@@ -78,6 +75,5 @@
                 document.getElementById("tgl_msk").value=tgl_msk;
                 document.getElementById("tgl_klr").value=tgl_klr;
                 document.getElementById("formEdit").action=targetUrl;
-                document.getElementById("file").value=namaFile;
               }
             </script>

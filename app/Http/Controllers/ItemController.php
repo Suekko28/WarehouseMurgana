@@ -34,11 +34,7 @@ class ItemController extends Controller
     {
         // $file = $request;
         // dd($file);
-
-        
-
         $request->validate([
-
             'alat' => 'required|max:20',
             'lokasi' => 'required|max:20',
             'pabrik' => 'required|max:20',
@@ -48,9 +44,6 @@ class ItemController extends Controller
             'tgl_msk' => 'required',
             'tgl_klr' => 'required',
             'company_id' => 'required',
-
-
-
         ],[
             'alat.required' => 'Kategori Alat Wajib Diisi',
             'lokasi.required' => 'Lokasi Wajib Diisi',
@@ -61,17 +54,8 @@ class ItemController extends Controller
             'tgl_msk.required' => 'File Wajib Diupload',   
             'tgl_klr.required' => 'File Wajib Diupload',   
             'company_id.required' => 'File Wajib Diupload'
-
-
-
-
-
         ]);
         
-        
-       
-
-
         $data = [
             'alat' => $request->alat,
             'lokasi' => $request->lokasi,
@@ -91,8 +75,7 @@ class ItemController extends Controller
         $tujuan_upload = 'data_file';
         $store_file->store($tujuan_upload,$request->file('file'));
 
-
-        return $this->show($request->company_id);
+        return redirect()->back()->with('status','Student Uploaded Successfully');
         // return redirect()->route('perusahaan.index', ['id' => $request->company_id])->with('success', 'Berhasil Menambahkan Data');
         
     }
@@ -122,7 +105,7 @@ class ItemController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        dd($request);
+        
         $request->validate([
 
             'alat' => 'required|max:20',
@@ -133,18 +116,15 @@ class ItemController extends Controller
             'file' => 'mimes:pdf',
             'tgl_msk' => 'required',
             'tgl_klr' => 'required',
-            'company_id' => 'required',
         ],[
             'alat.required' => 'Kategori Alat Wajib Diisi',
             'lokasi.required' => 'Lokasi Wajib Diisi',
             'pabrik.required' => 'Lokasi Wajib Diisi',
             'seri.required' => 'No Seri Wajib Diisi',
             'pengesahan.required' => 'No Pengesahan Wajib Diisi',
-            'tgl_msk.required' => 'File Wajib Diupload',   
-            'tgl_klr.required' => 'File Wajib Diupload',   
-            'company_id.required' => 'File Wajib Diupload'
+            'tgl_msk.required' => 'Tanggal Masuk Wajib Diisi',   
+            'tgl_klr.required' => 'Tanggal Keluar Wajib Diisi',   
         ]);
-        
         if($request->hasFile('file')){
             $store_file=new FileController();
             $tujuan_upload = 'data_file';
@@ -158,16 +138,44 @@ class ItemController extends Controller
                 'tgl_msk' => $request->tgl_msk,
                 'tgl_klr' => $request->tgl_klr,
                 'file' => $request->file->getClientOriginalName(),
-                'company_id' => $request->company_id,
             ];
-            dd($data->company_id);
-            $item=Item::find($data->company_id);
+            $item=Item::find($id);
+            $item->alat=$data['alat'];
+            $item->lokasi=$data['lokasi'];
+            $item->pabrik=$data['pabrik'];
+            $item->seri=$data['seri'];
+            $item->pengesahan=$data['pengesahan'];
+            $item->tgl_msk=$data['tgl_msk'];
+            $item->tgl_klr=$data['tgl_klr'];
+            $item->file=$data['file'];
+            $item->update();
+            return redirect()->back()->with('status','Student Updated Successfully');
 
         }
         else{
             
+            $data = [
+                'alat' => $request->alat,
+                'lokasi' => $request->lokasi,
+                'pabrik' => $request->pabrik,
+                'seri' => $request->seri,
+                'pengesahan' => $request->pengesahan,
+                'tgl_msk' => $request->tgl_msk,
+                'tgl_klr' => $request->tgl_klr,
+            ];
+            
+            $item=Item::find($id);
+            $item->alat=$data['alat'];
+            $item->lokasi=$data['lokasi'];
+            $item->pabrik=$data['pabrik'];
+            $item->seri=$data['seri'];
+            $item->pengesahan=$data['pengesahan'];
+            $item->tgl_msk=$data['tgl_msk'];
+            $item->tgl_klr=$data['tgl_klr'];
+            $item->update();
+            return redirect()->back()->with('status','Student Updated Successfully');
         }
-        dd($request);
+        
     }
 
     /**
