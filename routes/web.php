@@ -43,7 +43,7 @@ Route::middleware(['auth'])->group(function(){
 
 
 Route::get('/', function () {
-    return view('dashboard');
+    return view('auth.login');
 });
 Route::get('/dashboard',[DashboardController::class,'index']);
 

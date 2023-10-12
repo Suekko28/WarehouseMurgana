@@ -15,8 +15,8 @@
                     </div>   
             </div>
             <div class="table-responsive">
-                <table class="table table-bordered">
-                    <caption>List of users</caption>
+              <table class="table table-fixed table-bordered text-center vw-100">
+                <caption>List of users</caption>
                     <thead>
                       <tr>
                         <th scope="col">No</th>
