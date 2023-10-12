@@ -21,14 +21,18 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
+        'company_id',
     ];
-
+    protected $primaryKey = "id";
+    protected $table = 'users';
     /**
      * The attributes that should be hidden for serialization.
      *
      * @var array<int, string>
      */
-    protected $hidden = [
+    
+    protected $prim = [
         'password',
         'remember_token',
     ];

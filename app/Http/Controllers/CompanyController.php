@@ -81,6 +81,9 @@ class CompanyController extends Controller
         
 
 
+        //return view('company.detail', compact('data'));
+
+
         //
     }
 

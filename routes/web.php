@@ -38,6 +38,11 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/assets',[FileController::class,'open'])->name('file.open');
     Route::resource('/perusahaan', CompanyController::class);
     Route::resource('/perusahaan/detail', ItemController::class);
+    Route::get('delete-item/{id}', [ItemController::class, 'destroy']);
+
+    Route::get('/pengguna',function(){
+        return view('user.pengguna');
+    });
 });
 
 

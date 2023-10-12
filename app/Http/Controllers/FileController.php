@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Exception;
 use Illuminate\Http\Request;
-
+use File;
 class FileController extends Controller
 {
     public function open(Request $request){
@@ -22,7 +22,12 @@ class FileController extends Controller
             return response()->json(['error' => 'File not found or could not be opened.'], 404);
         }
     }
-    public function store($tujuan_upload,$file){
-        $file->move($tujuan_upload,$file->getClientOriginalName());
+    public function store($tujuan_upload,$file,$filename){
+        $file->move($tujuan_upload,$filename);
+    }
+    public function delete($filename){
+        if(File::exists(public_path("data_file/".$filename))){
+            File::delete(public_path("data_file/".$filename));
+        }
     }
 }

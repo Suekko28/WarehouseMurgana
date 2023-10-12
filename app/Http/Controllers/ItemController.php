@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Company;
 use App\Models\Item;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Str;
 class ItemController extends Controller
 {
     /**
@@ -55,6 +55,14 @@ class ItemController extends Controller
             'tgl_klr.required' => 'File Wajib Diupload',   
             'company_id.required' => 'File Wajib Diupload'
         ]);
+
+
+        $rand_generator=Str::random(8);
+        $file_control=new FileController();
+        $tujuan_upload = 'data_file';
+        $new_filename=$rand_generator.'_'.$request->file->getClientOriginalName();
+        $file_control->store($tujuan_upload,$request->file('file'),$new_filename);
+
         
 
 
@@ -72,6 +80,7 @@ class ItemController extends Controller
 
 
 
+
         $data = [
             'alat' => $request->alat,
             'lokasi' => $request->lokasi,
@@ -80,16 +89,14 @@ class ItemController extends Controller
             'pengesahan' => $request->pengesahan,
             'tgl_msk' => $request->tgl_msk,
             'tgl_klr' => $request->tgl_klr,
-            'file' => $request->file->getClientOriginalName(),
+            'file' => $new_filename,
             'company_id' => $request->company_id,
         ];
         // $data['user_id'] = auth()->user()->id;
         //storing into query
         Item::create($data);
         //storing file
-        $store_file=new FileController();
-        $tujuan_upload = 'data_file';
-        $store_file->store($tujuan_upload,$request->file('file'));
+        
 
         return redirect()->back()->with('status','Student Uploaded Successfully');
         // return redirect()->route('perusahaan.index', ['id' => $request->company_id])->with('success', 'Berhasil Menambahkan Data');
@@ -112,7 +119,7 @@ class ItemController extends Controller
     public function edit(string $id)
     {
         
-        dd($id);
+        
     }
 
     /**
@@ -141,9 +148,12 @@ class ItemController extends Controller
             'tgl_klr.required' => 'Tanggal Keluar Wajib Diisi',   
         ]);
         if($request->hasFile('file')){
-            $store_file=new FileController();
+            
+            $rand_generator=Str::random(8);
+            $file_control=new FileController();
             $tujuan_upload = 'data_file';
-            $store_file->store($tujuan_upload,$request->file('file'));
+            $new_filename=$rand_generator.'_'.$request->file->getClientOriginalName();
+            $file_control->store($tujuan_upload,$request->file('file'),$new_filename);
             $data = [
                 'alat' => $request->alat,
                 'lokasi' => $request->lokasi,
@@ -152,7 +162,7 @@ class ItemController extends Controller
                 'pengesahan' => $request->pengesahan,
                 'tgl_msk' => $request->tgl_msk,
                 'tgl_klr' => $request->tgl_klr,
-                'file' => $request->file->getClientOriginalName(),
+                'file' => $new_filename,
             ];
             $item=Item::find($id);
             $item->alat=$data['alat'];
@@ -163,6 +173,7 @@ class ItemController extends Controller
             $item->tgl_msk=$data['tgl_msk'];
             $item->tgl_klr=$data['tgl_klr'];
             $item->file=$data['file'];
+            $file_control->delete($item->getOriginal()['file']);
             $item->update();
             return redirect()->back()->with('status','Student Updated Successfully');
 
@@ -198,6 +209,8 @@ class ItemController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $item=Item::find($id);
+        $item->delete();
+        return redirect()->back()->with('status','Student Deleted Successfully');
     }
 }
