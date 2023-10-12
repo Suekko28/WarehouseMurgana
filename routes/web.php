@@ -21,11 +21,14 @@ use App\Http\Controllers\DashboardController;
 
 //auth route
 
+Route::post('/logout',[LoginController::class,'logout']);
+Route::get('/logout',[LoginController::class,'logout']);
 
 Route::get('/login', function () {
     return view('auth.login');
 })->middleware('guest');
 Route::post('/login',[LoginController::class,'authenticate']);
+
 Route::middleware(['auth'])->group(function(){
     Route::post('/logout',[LoginController::class,'logout']); 
     Route::get('/', function () {
@@ -42,6 +45,12 @@ Route::middleware(['auth'])->group(function(){
     });
 });
 
+
+
+Route::get('/', function () {
+    return view('auth.login');
+});
+Route::get('/dashboard',[DashboardController::class,'index']);
 
 
 
@@ -79,6 +88,4 @@ Route::get('/index', function () {
 //     return view('user.pengguna');
 // });
 
-// Route::get('/peralatan', function () {
-//     return view('user.peralatan');
-// });
+
