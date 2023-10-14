@@ -55,32 +55,11 @@ class ItemController extends Controller
             'tgl_klr.required' => 'File Wajib Diupload',   
             'company_id.required' => 'File Wajib Diupload'
         ]);
-
-
         $rand_generator=Str::random(8);
         $file_control=new FileController();
         $tujuan_upload = 'data_file';
         $new_filename=$rand_generator.'_'.$request->file->getClientOriginalName();
         $file_control->store($tujuan_upload,$request->file('file'),$new_filename);
-
-        
-
-
-
-
-
-
-    
-
-        $file = $request->file('file');
-        $tujuan_upload = 'data_file';
-        $file->move($tujuan_upload,$file->getClientOriginalName());
-       
-
-
-
-
-
         $data = [
             'alat' => $request->alat,
             'lokasi' => $request->lokasi,
