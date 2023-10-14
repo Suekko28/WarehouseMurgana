@@ -15,7 +15,7 @@ class ItemController extends Controller
     {
 
         // $data = Company::findOrFail($id);
-        // return view('item.detail')->with('data', $data);
+        // return view('itpem.detail')->with('data', $data);
         // //
     }
 
@@ -41,7 +41,7 @@ class ItemController extends Controller
             'seri' => 'required|max:20',
             'pengesahan' => 'required|max:20',
             'file' => 'required||mimes:pdf',
-            'tgl_msk' => 'required',
+            'tgl_msk' => 'required|date_format:d-m-y',
             'tgl_klr' => 'required',
             'company_id' => 'required',
         ],[
