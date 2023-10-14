@@ -31,9 +31,7 @@ Route::post('/login',[LoginController::class,'authenticate']);
 
 Route::middleware(['auth'])->group(function(){
     Route::post('/logout',[LoginController::class,'logout']); 
-    Route::get('/', function () {
-        return view('dashboard');
-    });
+    Route::get('/',[DashboardController::class,'index']);
     Route::get('/dashboard',[DashboardController::class,'index']);
     Route::get('/assets',[FileController::class,'open'])->name('file.open');
     Route::resource('/perusahaan', CompanyController::class);
@@ -45,11 +43,6 @@ Route::middleware(['auth'])->group(function(){
     });
 });
 
-
-
-Route::get('/', function () {
-    return view('auth.login');
-});
 Route::get('/dashboard',[DashboardController::class,'index']);
 
 
