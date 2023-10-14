@@ -41,7 +41,7 @@ class ItemController extends Controller
             'seri' => 'required|max:20',
             'pengesahan' => 'required|max:20',
             'file' => 'required||mimes:pdf',
-            'tgl_msk' => 'required|date_format:d-m-y',
+            'tgl_msk' => 'required',
             'tgl_klr' => 'required',
             'company_id' => 'required',
         ],[

@@ -122,9 +122,9 @@
                         <td>{{$item->pabrik}}</td>
                         <td>{{$item->seri}}</td>
                         <td>{{$item->pengesahan}}</td>
-                        <td>{{$item->tgl_msk}}</td>
-                        <td>{{$item->tgl_klr}}</td>
-                        <td class="text-white badge mt-3 bg-success rounded text-center">Sisa Waktu {{$keterangan->format('%d hari')}}</td>
+                        <td>{{ \Carbon\Carbon::parse($item->tgl_msk)->format('d-m-Y') }}</td>                        
+                        <td>{{ \Carbon\Carbon::parse($item->tgl_klr)->format('d-m-Y') }}</td>                        
+                        <td class="text-white badge mt-3 bg-success rounded text-center">Sisa Waktu {{$keterangan->format(' %y tahun %m bulan %d hari')}}</td>
                         <td>
                           <a href="{{ route('file.open',['file'=>$item->file]) }}" target="_blank"><button type="button" class="btn btn-primary mb-2"><i class=" fa fa-file"></i></button></a>
 
