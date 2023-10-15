@@ -7,6 +7,7 @@ use App\Http\Controllers\ItemsController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\DashboardController;
+use App\Models\Company;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,8 +42,14 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/pengguna',function(){
         return view('user.pengguna');
     });
+    Route::resource('/peralatan', ItemController::class);
 });
 
+
+
+Route::get('/', function () {
+    return view('auth.login');
+});
 Route::get('/dashboard',[DashboardController::class,'index']);
 
 
@@ -77,8 +84,8 @@ Route::get('/index', function () {
 //     return view('company.detail');
 // });
 
-// Route::get('/pengguna', function () {
-//     return view('user.pengguna');
-// });
+Route::get('/peralatan', function () {
+    return view('user.peralatan');
+});
 
 

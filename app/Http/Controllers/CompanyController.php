@@ -10,6 +10,7 @@ use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Http;
 use App\Http\Controllers\ItemController;
+use Illuminate\Support\Facades\DB;
 
 class CompanyController extends Controller
 {
@@ -110,6 +111,8 @@ class CompanyController extends Controller
     {
         //
     }
+
+ 
 
    
 
