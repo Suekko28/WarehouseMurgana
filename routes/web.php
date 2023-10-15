@@ -45,14 +45,11 @@ Route::middleware(['auth'])->group(function(){
     Route::resource('/peralatan', ItemController::class);
 });
 
-<<<<<<< Updated upstream
-=======
 
 
 Route::get('/', function () {
-    return view('dashboard');
+    return view('auth.login');
 });
->>>>>>> Stashed changes
 Route::get('/dashboard',[DashboardController::class,'index']);
 
 

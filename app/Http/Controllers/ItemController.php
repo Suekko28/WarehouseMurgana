@@ -19,13 +19,10 @@ class ItemController extends Controller
         return view('user.peralatan', compact('datas'));
         
 
-<<<<<<< Updated upstream
         // $data = Company::findOrFail($id);
         // return view('itpem.detail')->with('data', $data);
         // //
-=======
         //
->>>>>>> Stashed changes
     }
 
     /**
@@ -64,13 +61,11 @@ class ItemController extends Controller
             'tgl_klr.required' => 'File Wajib Diupload',
             'company_id.required' => 'File Wajib Diupload'
         ]);
-<<<<<<< Updated upstream
         $rand_generator=Str::random(8);
         $file_control=new FileController();
         $tujuan_upload = 'data_file';
         $new_filename=$rand_generator.'_'.$request->file->getClientOriginalName();
         $file_control->store($tujuan_upload,$request->file('file'),$new_filename);
-=======
 
 
         $rand_generator = Str::random(8);
@@ -83,7 +78,6 @@ class ItemController extends Controller
         $file->move($tujuan_upload, $file->getClientOriginalName());
 
 
->>>>>>> Stashed changes
         $data = [
             'alat' => $request->alat,
             'lokasi' => $request->lokasi,

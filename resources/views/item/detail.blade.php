@@ -79,12 +79,8 @@
                           <button type="button" onclick="keluarkan({{$loop->iteration}},{{$item->id}},{{$data->file}})" id="btn-edit" class="btn btn-warning mb-2" data-bs-toggle="modal" data-bs-target="#editModal"><i class=" fa fa-solid fa-pen-to-square" style="color:white;"></i></button>
                           <a href="{{ url('delete-item/'.$item->id) }}" class="btn btn-danger mb-2"><i class="fa fa-solid fa-trash"></i></a>
                       </td>
-<<<<<<< Updated upstream
-=======
-
                     </tr>
                     @endforeach
->>>>>>> Stashed changes
                     </tbody>
                   </table>
               </div>              
