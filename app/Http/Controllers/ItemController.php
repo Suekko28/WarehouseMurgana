@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Company;
 use App\Models\Item;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 class ItemController extends Controller
 {
@@ -88,8 +89,12 @@ class ItemController extends Controller
     public function show(string $id)
     {
         $data = Company::findOrFail($id);
-        $try = $data->item()->orderBy('created_at', 'desc')->paginate(1); // Mengurutkan data berdasarkan 'created_at' secara descending
-        return view('item.detail', compact('try','data'));
+        $items = DB::table('items')
+        ->select('alat')
+        ->distinct()
+        ->get()
+        ->paginate(1);   
+         return view('item.detail', compact('items', 'data'));
     }
 
     /**

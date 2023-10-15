@@ -31,7 +31,7 @@
                     <tbody>
                     </tr>
                     
-                      @foreach ($datas->item() as $item)
+                      {{-- @foreach ($datas->item() as $item)
                       <tr>
                       @php
                         $waktu_now=$item->tgl_msk;
@@ -56,7 +56,7 @@
                     </td>
 
                   </tr>
-                  @endforeach
+                  @endforeach --}}
                   </tbody>
 
                 </table>
