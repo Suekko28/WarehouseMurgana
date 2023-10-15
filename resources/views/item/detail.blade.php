@@ -134,15 +134,6 @@
 
                     </tr>
                     @endforeach
-
-                          <button type="button" onclick="keluarkan({{$loop->iteration}},{{$data->id}},{{$data->file}})" id="btn-edit" class="btn btn-warning mb-2" data-bs-toggle="modal" data-bs-target="#editModal"><i class=" fa fa-solid fa-pen-to-square" style="color:white;"></i></button>
-                          <button type="button" class="btn btn-danger mb-2"><i class="fa fa-solid fa-trash"></i></button>    
-                        </td>
-                        
-                      </tr>
-
-                    </tbody>
-                    @endforeach
                   </table>
               </div>
               {{$try ->links()}}
