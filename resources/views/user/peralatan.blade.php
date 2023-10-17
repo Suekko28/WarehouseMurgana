@@ -24,6 +24,9 @@
                         <th scope="col">Pabrik Pembuat</th>
                         <th scope="col">No.Seri</th>
                         <th scope="col">No.Pengesahan</th>
+                        <th scope="col">Tanggal Masuk</th>
+                        <th scope="col">Tanggal Keluar</th>
+                        <th scope="col">Keterangan</th>
                         <th scope="col">Aksi</th>
                       </tr>
                     </thead>
@@ -44,12 +47,11 @@
                       <td>{{$item->pabrik}}</td>
                       <td>{{$item->seri}}</td>
                       <td>{{$item->pengesahan}}</td>
-                      <td>{{$item->tgl_msk}}</td>
-                      <td>{{$item->tgl_klr}}</td>
-                      <td class="text-white badge mt-3 bg-success rounded text-center">Sisa Waktu {{$keterangan->format('%d hari')}}</td>
+                      <td>{{ \Carbon\Carbon::parse($item->tgl_msk)->format('d-m-Y') }}</td>                        
+                      <td>{{ \Carbon\Carbon::parse($item->tgl_klr)->format('d-m-Y') }}</td>                             
+                      <td class="text-white badge mt-3 bg-success rounded text-center">Sisa Waktu {{$keterangan->format(' %y tahun %m bulan %d hari')}}</td>
                       <td>
                         <a href="{{ route('file.open',['file'=>$item->file]) }}" target="_blank"><button type="button" class="btn btn-primary mb-2"><i class=" fa fa-file"></i></button></a>
-
                         <button type="button" onclick="keluarkan({{$loop->iteration}},{{$item->id}},{{$item->company_id}})" id="btn-edit" class="btn btn-warning mb-2" data-bs-toggle="modal" data-bs-target="#editModal"><i class=" fa fa-solid fa-pen-to-square" style="color:white;"></i></button>
                         <a href="{{ url('delete-item/'.$item->id) }}" class="btn btn-danger mb-2"><i class="fa fa-solid fa-trash"></i></a>
                     </td>

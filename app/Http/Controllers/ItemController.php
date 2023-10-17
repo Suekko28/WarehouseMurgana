@@ -16,7 +16,7 @@ class ItemController extends Controller
     
     public function index()
     {
-        $per_page=5;
+        $per_page=2;
         $items = Item::paginate($per_page);
         return view('user.peralatan', compact('items'));
     }
