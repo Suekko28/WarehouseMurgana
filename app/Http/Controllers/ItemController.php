@@ -7,6 +7,8 @@ use App\Models\Item;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+use Illuminate\Validation\Rules\In;
+
 class ItemController extends Controller
 {
     /**
@@ -14,7 +16,7 @@ class ItemController extends Controller
      */
     public function index(string $id)
     {
-
+       
         // $data = Company::findOrFail($id);
         // return view('item.detail')->with('data', $data);
         // //
@@ -78,7 +80,7 @@ class ItemController extends Controller
         //storing file
         
 
-        return redirect()->back()->with('status','Student Uploaded Successfully');
+        return redirect()->back()->with('status','Berhasil Menambahkan Data');
         // return redirect()->route('perusahaan.index', ['id' => $request->company_id])->with('success', 'Berhasil Menambahkan Data');
         
     }
@@ -193,4 +195,7 @@ class ItemController extends Controller
         $item->delete();
         return redirect()->back()->with('status','Student Deleted Successfully');
     }
+
+    
+
 }

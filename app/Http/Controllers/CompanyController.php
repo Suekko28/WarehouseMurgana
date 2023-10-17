@@ -67,7 +67,7 @@ class CompanyController extends Controller
        ]);
 
         // $data['user_id'] = auth()->user()->id;
-        return redirect()->to('perusahaan')->with('success', 'Berhasil Menambahkan Data');
+        return redirect()->to('perusahaan')->with('success', 'Berhasil Menambahkan Perusahaan');
         //
     }
 

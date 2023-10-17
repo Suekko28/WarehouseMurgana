@@ -60,6 +60,15 @@
 </div>
 @endif
 
+@if (Session::has('success'))
+<div class="pt-3">
+  <div class="alert alert-success">
+    {{Session::get('success')}}
+  </div>
+</div>
+@endif
+
+
 
        <div class="row justify-content-start text-center mb-5 ">
          @foreach ($data as $item)

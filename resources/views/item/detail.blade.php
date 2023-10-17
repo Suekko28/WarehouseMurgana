@@ -31,7 +31,15 @@
               </div>
             </div>
             @endif
-            
+
+            @if (Session::has('status'))
+            <div class="pt-3">
+              <div class="alert alert-success">
+                {{Session::get('status')}}
+              </div>
+            </div>
+            @endif
+
             <div class="table-responsive">
                 <table class="table table-fixed table-bordered text-center vw-100 ">
                     <caption>List of Data</caption>
