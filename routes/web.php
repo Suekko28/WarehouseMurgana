@@ -7,9 +7,7 @@ use App\Http\Controllers\ItemsController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\ToolsControler;
 use App\Http\Controllers\ToolsController;
-use App\Models\Company;
 
 /*
 |--------------------------------------------------------------------------

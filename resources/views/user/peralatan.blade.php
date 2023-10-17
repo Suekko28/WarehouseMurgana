@@ -30,7 +30,7 @@
                     <tbody>
                     </tr>
                     
-                      @foreach ($items->item() as $item)
+                      @foreach ($items as $item)
                       <tr>
                       @php
                         $waktu_now=$item->tgl_msk;
