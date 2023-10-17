@@ -3,11 +3,12 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\ItemController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\ItemsController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ToolsController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\ToolsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,9 +43,7 @@ Route::middleware(['auth'])->group(function(){
     Route::resource('/perusahaan/detail', ItemController::class);
     Route::get('delete-item/{id}', [ItemController::class, 'destroy']);
 
-    Route::get('/pengguna',function(){
-        return view('user.pengguna');
-    });
+    Route::get('/pengguna',[UserController::class,'index']);
 
     Route::get('/peralatan',[ItemController::class,'index']);
 
