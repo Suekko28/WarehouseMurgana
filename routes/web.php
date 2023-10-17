@@ -46,7 +46,7 @@ Route::middleware(['auth'])->group(function(){
         return view('user.pengguna');
     });
 
-    Route::resource('/peralatan', ToolsController::class);
+    Route::get('/peralatan',[ItemController::class,'index']);
 
 });
 

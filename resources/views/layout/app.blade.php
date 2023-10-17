@@ -84,7 +84,7 @@
             </li>
             @if(auth()->user()->role==1)
             <li class="nav-item me-2">
-              <a class="nav-link" href="#">Pengguna</a>
+              <a class="nav-link" href="/pengguna">Pengguna</a>
             </li>
             <li class="nav-item me-2">
               <a class="nav-link" href="/peralatan">Peralatan</a>

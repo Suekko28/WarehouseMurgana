@@ -58,7 +58,7 @@
           <table class="table table-fixed table-bordered text-center vw-100">
             <caption>List of users</caption>
                 <thead>
-                <!-- @foreach ($data->item()->get() as $item)
+                {{-- <!-- @foreach ($data->item()->get() as $item)
                         <tr>
                         @php
                           $waktu_now=$item->tgl_msk;
@@ -79,7 +79,7 @@
                           <a href="{{ route('file.open',['file'=>$item->file]) }}" target="_blank"><button type="button" class="btn btn-primary mb-2"><i class=" fa fa-file"></i></button></a>
                           <button type="button" onclick="keluarkan({{$loop->iteration}},{{$item->id}},{{$data->file}})" id="btn-edit" class="btn btn-warning mb-2" data-bs-toggle="modal" data-bs-target="#editModal"><i class=" fa fa-solid fa-pen-to-square" style="color:white;"></i></button>
                           <a href="{{ url('delete-item/'.$item->id) }}" class="btn btn-danger mb-2"><i class="fa fa-solid fa-trash"></i></a>
-                      </td> -->
+                      </td> --> --}}
                   <tr>
                     <th scope="col">No</th>
                     <th scope="col">Nama Pengguna</th>

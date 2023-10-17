@@ -13,12 +13,11 @@ class ItemController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(string $id)
+    public function index()
     {
        
-        // $data = Company::findOrFail($id);
-        // return view('item.detail')->with('data', $data);
-        // //
+        $items = Item::all();
+        return view('user.peralatan', compact('items'));
     }
 
     /**
