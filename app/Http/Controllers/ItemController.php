@@ -89,12 +89,8 @@ class ItemController extends Controller
     public function show(string $id)
     {
         $data = Company::findOrFail($id);
-        $items = DB::table('items')
-        ->select('alat')
-        ->distinct()
-        ->get()
-        ->paginate(1);   
-         return view('item.detail', compact('items', 'data'));
+        $try = $data->item()->paginate(1);
+        return view('item.detail', compact('try', 'data'));
     }
 
     /**
