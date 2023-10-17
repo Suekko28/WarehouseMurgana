@@ -88,8 +88,9 @@ class ItemController extends Controller
     public function show(string $id)
     {
         $data = Company::findOrFail($id);
-        $try = $data->item()->orderBy('created_at', 'desc')->paginate(1); // Mengurutkan data berdasarkan 'created_at' secara descending
-        return view('item.detail', compact('try','data'));
+        $per_page=5;
+        $try=Item::where('company_id','=',$id)->paginate($per_page);
+        return view('item.detail', compact('try','data','per_page'));
     }
 
     /**
