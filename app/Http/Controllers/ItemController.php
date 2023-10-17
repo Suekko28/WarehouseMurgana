@@ -13,10 +13,11 @@ class ItemController extends Controller
     /**
      * Display a listing of the resource.
      */
+    
     public function index()
     {
-       
-        $items = Item::all();
+        $per_page=5;
+        $items = Item::paginate($per_page);
         return view('user.peralatan', compact('items'));
     }
 
@@ -88,8 +89,8 @@ class ItemController extends Controller
      */
     public function show(string $id)
     {
-        $data = Company::findOrFail($id);
         $per_page=5;
+        $data = Company::findOrFail($id);
         $try=Item::where('company_id','=',$id)->paginate($per_page);
         return view('item.detail', compact('try','data','per_page'));
     }

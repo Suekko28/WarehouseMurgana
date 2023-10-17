@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use File;
 use Exception;
 use Illuminate\Http\Request;
 
@@ -26,6 +26,7 @@ class FileController extends Controller
         $file->move($tujuan_upload,$file->getClientOriginalName());
     }
     public function delete($filename){
+        
         if(File::exists(public_path("data_file/".$filename))){
             File::delete(public_path("data_file/".$filename));
         }

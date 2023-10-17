@@ -13,6 +13,7 @@ class UserController extends Controller
     public function index()
     {
         $data = User::orderBy('id', 'desc')->paginate(10);
+
         return view('user.pengguna')->with('data', $data);
     }
 
@@ -37,7 +38,8 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        //
+        $data = User::findOrFail($id);
+        
     }
 
     /**
