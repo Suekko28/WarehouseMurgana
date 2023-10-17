@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Company;
 use App\Models\Item;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 class ItemController extends Controller
 {
@@ -89,8 +88,9 @@ class ItemController extends Controller
     public function show(string $id)
     {
         $data = Company::findOrFail($id);
-        $try = $data->item()->paginate(1);
-        return view('item.detail', compact('try', 'data'));
+        $per_page=5;
+        $try=Item::where('company_id','=',$id)->paginate($per_page);
+        return view('item.detail', compact('try','data','per_page'));
     }
 
     /**
