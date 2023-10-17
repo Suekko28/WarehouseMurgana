@@ -36,12 +36,13 @@
                       @foreach ($items as $item)
                       <tr>
                       @php
+                        $id_bef=($items->currentPage()-1)*$per_page;
                         $waktu_now=$item->tgl_msk;
                         $date1=new DateTime($item->tgl_klr);
                         $date2=new DateTime();
                         $keterangan=$date1->diff($date2);
                       @endphp
-                      <th scope="row">{{ $loop->iteration }}</th>
+                      <th scope="row">{{ $loop->iteration +$id_bef}}</th>
                       <td>{{$item->alat}}</td>
                       <td>{{$item->lokasi}}</td>
                       <td>{{$item->pabrik}}</td>

@@ -18,7 +18,7 @@ class ItemController extends Controller
     {
         $per_page=2;
         $items = Item::paginate($per_page);
-        return view('user.peralatan', compact('items'));
+        return view('user.peralatan', compact('items','per_page'));
     }
 
     /**
