@@ -29,7 +29,21 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|max:20',
+            
+        ],[
+            'name.required' => 'Nama Perusahaan Wajib Diisi',
+           
+
+        ]);
+
+       Company::create([
+        'name' => $request->name
+       ]);
+
+        // $data['user_id'] = auth()->user()->id;
+        return redirect()->to('perusahaan')->with('success', 'Berhasil Menambahkan Perusahaan');
     }
 
     /**

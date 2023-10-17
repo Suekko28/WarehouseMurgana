@@ -60,21 +60,5 @@
                 </div>
               </div>
             </div>
-            <script>
-              // $(document).ready(function () {
-              //     $('#tgl_msk').datepicker({
-              //         format: 'dd-mm-yyyy'
-              //     });
-              // });
-
-              // $(document).ready(function () {
-              //     $('#tgl_klr').datepicker({
-              //         format: 'dd-mm-yyyy'
-              //     });
-              // });
-
-              
-
-              
-          </script>
+          
 
