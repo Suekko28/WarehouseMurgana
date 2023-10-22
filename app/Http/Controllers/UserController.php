@@ -18,7 +18,7 @@ class UserController extends Controller
         $per_page=5;
         $data = User::orderBy('id', 'asc')->paginate($per_page);
         $company=Company::all()->unique();
-        return view('user.pengguna')->with('users', $data)->with('per_page',$per_page)->with('company',$company);
+        return view('user.pengguna')->with('users', $users)->with('per_page',$per_page)->with('company',$company);
     }
 
     /**
