@@ -21,8 +21,9 @@ class FileController extends Controller
             return response()->json(['error' => 'File not found or could not be opened.'], 404);
         }
     }
-    public function store($tujuan_upload,$file){
-        $file->move($tujuan_upload,$file->getClientOriginalName());
+    public function store($tujuan_upload,$file,$filename){
+        
+        $file->move($tujuan_upload,$filename);
     }
     public function delete($filename){
         

@@ -36,13 +36,13 @@ class ItemController extends Controller
     {
         // $file = $request;
         // dd($file);
+        
         $request->validate([
             'alat' => 'required|max:20',
             'lokasi' => 'required|max:20',
             'pabrik' => 'required|max:20',
             'seri' => 'required|max:20',
             'pengesahan' => 'required|max:20',
-            'file' => 'required||mimes:pdf',
             'tgl_msk' => 'required',
             'tgl_klr' => 'required',
             'company_id' => 'required',
@@ -51,12 +51,12 @@ class ItemController extends Controller
             'lokasi.required' => 'Lokasi Wajib Diisi',
             'pabrik.required' => 'Lokasi Wajib Diisi',
             'seri.required' => 'No Seri Wajib Diisi',
-            'pengesahan.required' => 'No Pengesahan Wajib Diisi',
-            'file.required' => 'File Wajib Diupload',   
+            'pengesahan.required' => 'No Pengesahan Wajib Diisi',   
             'tgl_msk.required' => 'File Wajib Diupload',   
             'tgl_klr.required' => 'File Wajib Diupload',   
             'company_id.required' => 'File Wajib Diupload'
         ]);
+        
         $rand_generator=Str::random(8);
         $file_control=new FileController();
         $tujuan_upload = 'data_file';
