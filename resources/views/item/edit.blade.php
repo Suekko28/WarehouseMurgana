@@ -57,7 +57,6 @@
 <script>
   function keluarkan(id,itemId,namaFile){
     var cells = document.getElementsByTagName("tr");
-    console.log(cells[id].children[0].innerHTML);
     let alat=cells[id].children[1].innerHTML;
     let lokasi=cells[id].children[2].innerHTML;
     let pabrik=cells[id].children[3].innerHTML;
@@ -66,7 +65,6 @@
     let tgl_msk=cells[id].children[6].innerHTML
     let tgl_klr=cells[id].children[7].innerHTML
     let targetUrl="/perusahaan/detail/"+itemId;
-    console.log(targetUrl);
     document.getElementById("alat").value=alat;
     document.getElementById("lokasi").value=lokasi;
     document.getElementById("pabrik").value=pabrik;
