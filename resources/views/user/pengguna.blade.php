@@ -43,7 +43,7 @@
                           $role="User";
                         }
                         if($user->company_id!=NULL){
-                        $company_name=$company[$user->company_id]->name;
+                        $company_name=$company[$user->company_id-1]->name;
                         }else{
                           $company_name="None";
                         }

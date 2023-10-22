@@ -26,7 +26,6 @@ class UserController extends Controller
      */
     public function create()
     {
-        dd($request);
     }
 
     /**
@@ -34,11 +33,12 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        
+        // dd($request);
+
         $request->validate([
             'name' => 'required|max:20',
             'password'=>'required|max:20',
-            'email' => 'required|max:20',
+            'email' => 'required|max:50',
             'role' => 'required|max:20'
         ],[
             'name.required' => 'Nama Wajib Diisi',
@@ -69,7 +69,6 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        $data = User::findOrFail($id);
         
     }
 
@@ -86,15 +85,14 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        // dd($request);
         $request->validate([
             'name' => 'required|max:20',
-            'email' => 'required|max:20',
-            'company'=>'required|max:20',
+            'email' => 'required|max:50',
             'role' => 'required|max:20'
         ],[
             'name.required' => 'Nama Wajib Diisi',
             'email.required' => 'Email Wajib Diisi',
-            'company.required'=>'Company Wajib Diisi',
             'role.required' => 'Role Wajib Diisi'
         ]);
         
