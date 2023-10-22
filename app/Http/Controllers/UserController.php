@@ -26,7 +26,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        dd($request);
+        
     }
 
     /**
@@ -69,7 +69,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        $data = User::findOrFail($id);
+        
         
     }
 
