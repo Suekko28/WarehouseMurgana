@@ -59,7 +59,6 @@
                     <th scope="col">No</th>
                     <th scope="col">Nama Pengguna</th>
                     <th scope="col">SSID</th>
-                    <th scope="col">Password</th>
                     <th scope="col">Keterangan</th>
                     <th scope="col">Aksi</th>
                   </tr>
@@ -106,6 +105,4 @@
     </div>
   
 </main>
-      
-   
 @endsection
