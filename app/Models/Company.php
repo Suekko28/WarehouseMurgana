@@ -15,7 +15,7 @@ class Company extends Model
 
     public function item(){
 
-        return $this->hasOne    (Item::class);
+        return $this->hasOne(Item::class);
     }
 
     use HasFactory;

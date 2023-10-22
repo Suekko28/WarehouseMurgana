@@ -157,7 +157,7 @@ class ItemController extends Controller
             $item->file=$data['file'];
             $file_control->delete($item->getOriginal()['file']);
             $item->update();
-            return redirect()->back()->with('status','Student Updated Successfully');
+            return redirect()->back()->with('status','Item Updated Successfully');
 
         }
         else{
@@ -181,7 +181,7 @@ class ItemController extends Controller
             $item->tgl_msk=$data['tgl_msk'];
             $item->tgl_klr=$data['tgl_klr'];
             $item->update();
-            return redirect()->back()->with('status','Student Updated Successfully');
+            return redirect()->back()->with('status','Item Updated Successfully');
         }
         
     }
@@ -193,7 +193,7 @@ class ItemController extends Controller
     {
         $item=Item::find($id);
         $item->delete();
-        return redirect()->back()->with('status','Student Deleted Successfully');
+        return redirect()->back()->with('status','Item Deleted Successfully');
     }
 
     

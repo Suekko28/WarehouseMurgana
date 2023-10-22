@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 use File;
 use Exception;
 use Illuminate\Http\Request;
-
 class FileController extends Controller
 {
     public function open(Request $request){
@@ -31,6 +30,7 @@ class FileController extends Controller
             File::delete(public_path("data_file/".$filename));
         }
     }
+
 }
 
 
