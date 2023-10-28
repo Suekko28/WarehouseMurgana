@@ -109,7 +109,9 @@ class CompanyController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        // return 'hi'.$id;
+        Company::where('id', $id)->delete();
+        return redirect()->to('perusahaan')->with('success', 'Berhasil Melakukan Delete Data');
     }
 
  
