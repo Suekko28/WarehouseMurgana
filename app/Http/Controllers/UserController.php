@@ -112,7 +112,7 @@ class UserController extends Controller
             ];
             $user=User::find($id);
             if($user->name==="sa-admin"){
-                return redirect()->back()->with('status','sa-admin cannot be updated');
+                return redirect()->back()->with('success','sa-admin cannot be updated');
             }
             $user->name=$data['name'];
             $user->password=$data['password'];
@@ -120,7 +120,7 @@ class UserController extends Controller
             $user->company_id=$data['company'];
             $user->role=$data['role'];
             $user->update();
-            return redirect()->back()->with('status','User Data Updated Successfully');
+            return redirect()->back()->with('success','User Data Updated Successfully');
 
         }
         else{   

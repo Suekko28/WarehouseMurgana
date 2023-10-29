@@ -93,7 +93,8 @@ class CompanyController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $data = Company::where('id', $id)->first();
+        return view('company.perusahaan')->with('data', $data);
     }
 
     /**
@@ -101,7 +102,21 @@ class CompanyController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'name' => 'required|max:20',
+            
+        ],[
+            'name.required' => 'Nama Perusahaan Wajib Diisi',
+           
+
+        ]);
+
+       Company::create([
+        'name' => $request->name
+       ]);
+
+        // $data['user_id'] = auth()->user()->id;
+        return redirect()->to('perusahaan')->with('success', 'Berhasil Melakukan Update Data');
     }
 
     /**
@@ -111,7 +126,7 @@ class CompanyController extends Controller
     {
         // return 'hi'.$id;
         Company::where('id', $id)->delete();
-        return redirect()->to('perusahaan')->with('success', 'Berhasil Melakukan Delete Data');
+        return redirect()->to('perusahaan')->with('delete', 'Berhasil Melakukan Delete Perusahaan');
     }
 
  

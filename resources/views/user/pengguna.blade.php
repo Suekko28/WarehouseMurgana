@@ -14,6 +14,8 @@
                   <button type="button" class="btn btn-outline-success btn-md mb-5 me-3" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-plus"></i> Pengguna</button>
                 </div>   
         </div>
+
+        @include('layout.message')
       
         
         <div class="table-responsive">
