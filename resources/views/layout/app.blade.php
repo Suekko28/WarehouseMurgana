@@ -76,25 +76,25 @@
         </a>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            @if(auth()->user()->role==1)
             <li class="nav-item me-2">
               <a class="nav-link active" aria-current="page" href="/dashboard">Beranda</a>
             </li>
             <li class="nav-item me-2">
               <a class="nav-link" href="/perusahaan">Perusahaan</a>
             </li>
-            @if(auth()->user()->role==1)
             <li class="nav-item me-2">
               <a class="nav-link" href="/pengguna">Pengguna</a>
             </li>
             <li class="nav-item me-2">
               <a class="nav-link" href="/peralatan">Peralatan</a>
             </li>
-            @endif
           </ul>
           <form class="d-flex" role="search" id="formSearch">
             <input class="form-control me-2 rounded-pill  p-2" type="search" placeholder="Cari Disini" aria-label="Search">
             <button class="btn btn-outline-success fa fa-solid fa-magnifying-glass" type="submit"></button>
           </form>
+          @endif
           <ul class="navbar-nav">
             <li class="nav-item dropdown me-2">
               
