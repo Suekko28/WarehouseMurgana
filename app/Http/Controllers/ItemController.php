@@ -16,7 +16,7 @@ class ItemController extends Controller
     
     public function index()
     {
-        $per_page=2;
+        $per_page=10;
         $items = Item::paginate($per_page);
         return view('user.peralatan', compact('items','per_page'));
     }
@@ -89,7 +89,7 @@ class ItemController extends Controller
      */
     public function show(string $id)
     {
-        $per_page=5;
+        $per_page=10;
         $data = Company::findOrFail($id);
         $try=Item::where('company_id','=',$id)->paginate($per_page);
         return view('item.detail', compact('try','data','per_page'));
