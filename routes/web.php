@@ -47,6 +47,7 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/',[DashboardController::class,'index']);
     Route::get('/dashboard',[DashboardController::class,'index']);
     Route::get('/search',[CompanyController::class,'search']);
+    Route::get('/search', [ItemController::class, 'search'])->name('search');
     Route::get('/assets',[FileController::class,'open'])->name('file.open'); 
     Route::get('/download',[FileController::class,'download']);
     Route::resource('/perusahaan/detail', ItemController::class);

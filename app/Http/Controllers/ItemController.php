@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Company;
 use App\Models\Item;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rules\In;
 
@@ -194,6 +195,20 @@ class ItemController extends Controller
         $item=Item::find($id);
         $item->delete();
         return redirect()->back()->with('delete','Berhasil Melakukan Delete Data');
+    }
+
+    public function search(Request $request) {
+        $search = $request->search;
+        $data = DB::table('items')
+        ->where('alat', 'like', "%".$search."%")
+        ->limit(10)
+        ->get();
+
+        if($data->count()==0){
+            return view('item.detail',['kosong'=>true]);
+        }
+
+        return view('item.detail', compact('search','data'),['kosong'=>false]);
     }
 
     
