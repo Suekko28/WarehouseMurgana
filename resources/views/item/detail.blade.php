@@ -18,33 +18,15 @@
                       <h5 class="text-success fw-bold mb-5">{{ $data->name }}</h5>
                     </div>
                     <div class="col text-right">
+                      @if(auth()->user()->role==1)
                         <button type="button" class="btn btn-outline-success btn-md mb-5" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-plus"></i> Barang</button>
                         <button type="button" class="btn btn-outline-danger btn-md mb-5" ><i class="fa-solid fa-file-import"></i> Import</button>
+                      @endif
                         <button type="button" class="btn btn-outline-primary btn-md mb-5 "><i class="fa-solid fa-download"></i> Download</button>
                     </div>   
             </div>
 
-            @if ($errors->any())
-            <div class="pt-3">
-              <div class="alert alert-danger">
-                <ul>
-                  @foreach ($errors->all() as $item)
-                  <li>{{ $item }}</li>
-                      
-                  @endforeach
-                </ul>
-            
-              </div>
-            </div>
-            @endif
-
-            @if (Session::has('status'))
-            <div class="pt-3">
-              <div class="alert alert-success">
-                {{Session::get('status')}}
-              </div>
-            </div>
-            @endif
+       @include('layout.message')
 
             <div class="table-responsive">
                 <table class="table table-fixed table-bordered text-center vw-100 ">
@@ -60,8 +42,10 @@
                         <th scope="col">Tanggal Masuk</th>
                         <th scope="col">Tanggal Keluar</th>
                         <th scope="col">Keterangan</th>
+                        @if(auth()->user()->role==1)
                         <th scope="col">Aksi</th>
                       </tr>
+                      @endif
                     </thead>
                     
                     <tbody>
@@ -83,16 +67,16 @@
                         <td>{{$item->pabrik}}</td>
                         <td>{{$item->seri}}</td>
                         <td>{{$item->pengesahan}}</td>
-                        <td>{{$item->tgl_msk}}</td>
-                        <td>{{$item->tgl_klr}}</td>
-                        <td class="text-white badge mt-3 bg-success rounded text-center">Sisa Waktu {{$keterangan->format('%d hari')}}</td>
+                        <td>{{ \Carbon\Carbon::parse($item->tgl_msk)->format('d-m-Y') }}</td>                        
+                        <td>{{ \Carbon\Carbon::parse($item->tgl_klr)->format('d-m-Y') }}</td>                             
+                        <td class="text-white badge mt-2 bg-success rounded text-center">Sisa Waktu {{$keterangan->format(' %y tahun %m bulan %d hari')}}</td>
+                        @if(auth()->user()->role==1)
                         <td>
                           <a href="{{ route('file.open',['file'=>$item->file]) }}" target="_blank"><button type="button" class="btn btn-primary mb-2"><i class=" fa fa-file"></i></button></a>
-
                           <button type="button" onclick="keluarkan({{$loop->iteration}},{{$item->id}},{{$data->file}})" id="btn-edit" class="btn btn-warning mb-2" data-bs-toggle="modal" data-bs-target="#editModal"><i class=" fa fa-solid fa-pen-to-square" style="color:white;"></i></button>
                           <a href="{{ url('delete-item/'.$item->id) }}" class="btn btn-danger mb-2"><i class="fa fa-solid fa-trash"></i></a>
                       </td>
-
+                      @endif
                     </tr>
                     @endforeach
                   </table>

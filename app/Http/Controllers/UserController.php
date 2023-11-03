@@ -26,7 +26,6 @@ class UserController extends Controller
      */
     public function create()
     {
-        
     }
 
     /**
@@ -34,11 +33,12 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        
+        // dd($request);
+
         $request->validate([
             'name' => 'required|max:20',
             'password'=>'required|max:20',
-            'email' => 'required|max:20',
+            'email' => 'required|max:50',
             'role' => 'required|max:20'
         ],[
             'name.required' => 'Nama Wajib Diisi',
@@ -70,15 +70,15 @@ class UserController extends Controller
     public function show(User $user)
     {
         
-        
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(User $user)
+    public function edit(String $id)
     {
-        //
+        $data = User::where('id', $id)->first();
+        return view('company.perusahaan')->with('data', $data);
     }
 
     /**
@@ -86,15 +86,14 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        // dd($request);
         $request->validate([
             'name' => 'required|max:20',
-            'email' => 'required|max:20',
-            'company'=>'required|max:20',
+            'email' => 'required|max:50',
             'role' => 'required|max:20'
         ],[
             'name.required' => 'Nama Wajib Diisi',
             'email.required' => 'Email Wajib Diisi',
-            'company.required'=>'Company Wajib Diisi',
             'role.required' => 'Role Wajib Diisi'
         ]);
         
@@ -114,7 +113,7 @@ class UserController extends Controller
             ];
             $user=User::find($id);
             if($user->name==="sa-admin"){
-                return redirect()->back()->with('status','sa-admin cannot be updated');
+                return redirect()->back()->with('success','sa-admin cannot be updated');
             }
             $user->name=$data['name'];
             $user->password=$data['password'];
@@ -122,7 +121,7 @@ class UserController extends Controller
             $user->company_id=$data['company'];
             $user->role=$data['role'];
             $user->update();
-            return redirect()->back()->with('status','User Data Updated Successfully');
+            return redirect()->back()->with('success','User Data Updated Successfully');
 
         }
         else{   

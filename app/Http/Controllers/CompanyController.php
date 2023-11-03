@@ -93,7 +93,8 @@ class CompanyController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $data = Company::where('id', $id)->first();
+        return view('company.perusahaan')->with('data', $data);
     }
 
     /**
@@ -101,7 +102,22 @@ class CompanyController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'name' => 'required|max:20',
+            
+        ],[
+            'name.required' => 'Nama Perusahaan Wajib Diisi',
+           
+
+        ]);
+        
+        $data = Company::findOrFail($id);
+
+       $data->update([
+        'name' => $request->name
+       ]);
+        // $data['user_id'] = auth()->user()->id;
+        return redirect()->to('perusahaan')->with('success', 'Berhasil Melakukan Update Perusahaan');
     }
 
     /**
@@ -109,7 +125,23 @@ class CompanyController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        // return 'hi'.$id;
+        Company::where('id', $id)->delete();
+        return redirect()->to('perusahaan')->with('delete', 'Berhasil Melakukan Delete Perusahaan');
+    }
+
+    public function search(Request $request){
+        $search = $request->search;
+        $data = DB::table('companies')
+        ->where('name', 'like', "%".$search."%")
+        ->limit(10)
+        ->get();
+
+        if($data->count()==0){
+            return view('search',['kosong'=>True]);
+        }
+
+        return view('search', compact('search', 'data'),['kosong'=>False]);
     }
 
  

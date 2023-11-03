@@ -14,13 +14,14 @@
                   <button type="button" class="btn btn-outline-success btn-md mb-5 me-3" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-plus"></i> Pengguna</button>
                 </div>   
         </div>
+
+        @include('layout.message')
       
         
         <div class="table-responsive">
           <table class="table table-fixed table-bordered text-center vw-100">
             <caption>List of users</caption>
                 <thead>
-              
                   <tr>
                     <th scope="col">No</th>
                     <th scope="col">Nama Pengguna</th>
@@ -43,9 +44,9 @@
                           $role="User";
                         }
                         if($user->company_id!=NULL){
-                        $company_name=$company[$user->company_id]->name;
+                        $company_name=$company[$user->company_id-1]->name;
                         }else{
-                          $company_name="None";
+                          $company_name="Admin";
                         }
                       @endphp
                       <th scope="row">{{ $loop->iteration +$id_bef}}</th>                     

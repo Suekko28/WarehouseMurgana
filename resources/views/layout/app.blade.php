@@ -76,6 +76,7 @@
         </a>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          
             <li class="nav-item me-2">
               <a class="nav-link active" aria-current="page" href="/dashboard">Beranda</a>
             </li>
@@ -91,13 +92,14 @@
             </li>
             @endif
           </ul>
-          <form class="d-flex" role="search" id="formSearch">
-            <input class="form-control me-2 rounded-pill  p-2" type="search" placeholder="Cari Disini" aria-label="Search">
+          @if(auth()->user()->role==1)
+          <form action="/search" class="d-flex" role="search" id="formSearch" method="GET">
+            <input class="form-control me-2 rounded-pill  p-2" name="search" type="search" placeholder="Cari Disini" aria-label="Search">
             <button class="btn btn-outline-success fa fa-solid fa-magnifying-glass" type="submit"></button>
           </form>
+          @endif
           <ul class="navbar-nav">
             <li class="nav-item dropdown me-2">
-              
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 {{auth()->user()->name}}
               </a>
