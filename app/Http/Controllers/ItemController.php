@@ -79,7 +79,7 @@ class ItemController extends Controller
         //storing file
         
 
-        return redirect()->back()->with('status','Berhasil Menambahkan Data');
+        return redirect()->back()->with('success','Berhasil Menambahkan Data');
         // return redirect()->route('perusahaan.index', ['id' => $request->company_id])->with('success', 'Berhasil Menambahkan Data');
         
     }
@@ -157,7 +157,7 @@ class ItemController extends Controller
             $item->file=$data['file'];
             $file_control->delete($item->getOriginal()['file']);
             $item->update();
-            return redirect()->back()->with('status','Item Updated Successfully');
+            return redirect()->back()->with('status','Berhasil Melakukan Update Data');
 
         }
         else{
@@ -181,7 +181,7 @@ class ItemController extends Controller
             $item->tgl_msk=$data['tgl_msk'];
             $item->tgl_klr=$data['tgl_klr'];
             $item->update();
-            return redirect()->back()->with('status','Item Updated Successfully');
+            return redirect()->back()->with('success','Berhasil Melakukan Update Data');
         }
         
     }
@@ -193,7 +193,7 @@ class ItemController extends Controller
     {
         $item=Item::find($id);
         $item->delete();
-        return redirect()->back()->with('status','Item Deleted Successfully');
+        return redirect()->back()->with('delete','Berhasil Melakukan Delete Data');
     }
 
     

@@ -46,7 +46,7 @@
                         if($user->company_id!=NULL){
                         $company_name=$company[$user->company_id-1]->name;
                         }else{
-                          $company_name="None";
+                          $company_name="Admin";
                         }
                       @endphp
                       <th scope="row">{{ $loop->iteration +$id_bef}}</th>                     

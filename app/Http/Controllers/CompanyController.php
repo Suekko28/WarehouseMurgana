@@ -117,7 +117,7 @@ class CompanyController extends Controller
         'name' => $request->name
        ]);
         // $data['user_id'] = auth()->user()->id;
-        return redirect()->to('perusahaan')->with('success', 'Berhasil Melakukan Update Data');
+        return redirect()->to('perusahaan')->with('success', 'Berhasil Melakukan Update Perusahaan');
     }
 
     /**
@@ -128,6 +128,11 @@ class CompanyController extends Controller
         // return 'hi'.$id;
         Company::where('id', $id)->delete();
         return redirect()->to('perusahaan')->with('delete', 'Berhasil Melakukan Delete Perusahaan');
+    }
+
+    public function search(Request $request){
+        $cari = $request->cari;
+        $search = DB::table('companies')
     }
 
  
