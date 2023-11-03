@@ -131,8 +131,17 @@ class CompanyController extends Controller
     }
 
     public function search(Request $request){
-        $cari = $request->cari;
-        $search = DB::table('companies')
+        $search = $request->search;
+        $data = DB::table('companies')
+        ->where('name', 'like', "%".$search."%")
+        ->limit(10)
+        ->get();
+
+        if($data->count()==0){
+            return view('search',['kosong'=>True]);
+        }
+
+        return view('search', compact('search', 'data'),['kosong'=>False]);
     }
 
  

@@ -14,4 +14,5 @@ class DashboardController extends Controller
         $user = DB::table('users')->get();
         return view('dashboard', compact('company', 'tools', 'user') );
     }
+
 }
