@@ -75,9 +75,10 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(User $user)
+    public function edit(String $id)
     {
-        //
+        $data = User::where('id', $id)->first();
+        return view('company.perusahaan')->with('data', $data);
     }
 
     /**

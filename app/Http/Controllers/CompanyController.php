@@ -110,11 +110,12 @@ class CompanyController extends Controller
            
 
         ]);
+        
+        $data = Company::findOrFail($id);
 
-       Company::create([
+       $data->update([
         'name' => $request->name
        ]);
-
         // $data['user_id'] = auth()->user()->id;
         return redirect()->to('perusahaan')->with('success', 'Berhasil Melakukan Update Data');
     }
