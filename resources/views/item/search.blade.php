@@ -25,7 +25,7 @@
                         <button type="button" class="btn btn-outline-primary btn-md mb-5 "><i class="fa-solid fa-download"></i> Download</button>
                     </div>   
             </div>
-            {{-- <form action="{{ url('/perusahaan/detail/'.$data->id.'/search') }}" method="GET">              
+            {{-- <form action="{{ route('search') }}" method="GET">              
               <input class="form-control me-2 rounded-pill p-2" name="search" type="search" placeholder="Cari Disini" aria-label="Search">
           </form> --}}
           
