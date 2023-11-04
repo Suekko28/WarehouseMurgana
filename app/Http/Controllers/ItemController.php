@@ -7,7 +7,8 @@ use App\Models\Company;
 use App\Models\Item;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use Maatwebsite\Excel\Excel;
+use Maatwebsite\Excel\Facades\Excel;
+
 
 class ItemController extends Controller
 {
@@ -198,7 +199,8 @@ class ItemController extends Controller
     }
     
     public function export_excel(){
-        return Excel::download(new Export, 'siswa.xlsx');
+        $export = new Export;
+        return Excel::download($export, 'Peralatan.xlsx');
     }
 
 
