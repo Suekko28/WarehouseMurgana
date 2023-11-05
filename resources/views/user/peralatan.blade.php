@@ -9,7 +9,7 @@
                       <h5 class="text-success fw-bold">List Peralatan</h5>
                     </div>
                     <div class="col text-right">
-                      <button type="button" class="btn btn-outline-danger btn-md mb-5" ><i class="fa-solid fa-file-import"></i> Import</button>
+                      <button type="button" class="btn btn-outline-danger btn-md mb-5" data-bs-toggle="modal" data-bs-target="#importModal" ><i class="fa-solid fa-file-import"></i> Import</button>
                       <a href="/peralatan/export" type="button" class="btn btn-outline-primary btn-md mb-5 " target="_blank"><i class="fa-solid fa-download"></i> Download</a>
                   </div>   
           </div>
@@ -70,6 +70,8 @@
         </div>
 
         @include('item.edit')
+        @include('user.import')
+        @include('layout.message')
      
           
 

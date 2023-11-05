@@ -40,7 +40,8 @@ Route::middleware(['auth'])->group(function(){
         Route::get('delete-user/{id}', [UserController::class, 'destroy']);
         Route::get('/pengguna',[UserController::class,'index']);
         Route::get('/peralatan',[ItemController::class,'index']);
-        Route::get('/peralatan/export',[ItemController::class,'export_excel']);    
+        Route::get('/peralatan/export',[ItemController::class,'export_excel']);  
+        Route::post('/peralatan/import',[ItemController::class,'import_excel']);      
         Route::resource('/users',UserController::class);
     });
     Route::resource('/perusahaan', CompanyController::class);
@@ -51,6 +52,7 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/perusahaan/detail/{id}/search', [ItemController::class, 'search']);
     Route::get('/assets',[FileController::class,'open'])->name('file.open'); 
     Route::get('/download',[FileController::class,'download']);
+    Route::get('/perusahaan/detail/{id}/export', [ItemController::class,'export']);
     Route::resource('/perusahaan/detail', ItemController::class);
     
     
