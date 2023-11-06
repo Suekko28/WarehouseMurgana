@@ -15,14 +15,15 @@ class Import implements ToModel
     public function model(array $row)
     {
         return new Item([
-            'alat' => $row[1],
-            'lokasi' => $row[2],
-            'pabrik' => $row[3],
-            'seri' => $row[4],
-            'pengesahan' => $row[5],
-            'file' => $row[6],
-            'tgl_msk' => $row[7],
-            'tgl_klr' => $row[8],
+            'alat' => $row[0],
+            'lokasi' => $row[1],
+            'pabrik' => $row[2],
+            'seri' => $row[3],
+            'pengesahan' => $row[4],
+            'file' => $row[5],
+            'tgl_msk' => $row[6],
+            'tgl_klr' => $row[7],
+            'company_id' => $row[8],
 
         ]);
     }

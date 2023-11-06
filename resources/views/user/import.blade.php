@@ -14,9 +14,9 @@
                           <label for="file" class="form-label">File</label>
                           <input name="file" type="file" class="form-control w-100" id="file">
                         </div>
-                        {{-- <div class="mb-3">
-                          <input value="{{$data->id}}" name="company_id" type="hidden" class="form-control w-100" id="file">
-                        </div> --}}
+                        <div class="mb-3">
+                          <input value="{{$item->id}}" name="company_id" type="hidden" class="form-control w-100" id="file">
+                        </div>
                       
                         
                     </div>

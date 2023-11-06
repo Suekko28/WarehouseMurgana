@@ -12,6 +12,7 @@ class Export implements FromCollection
     */
     public function collection()
     {
-        return Item::select('id','alat', 'lokasi', 'pabrik', 'seri','pengesahan','tgl_msk','tgl_klr')->get();    
+        // return Item::select('id','alat', 'lokasi', 'pabrik', 'seri','pengesahan','tgl_msk','tgl_klr')->get();    
+        return Item::all();
     }
 }

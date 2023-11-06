@@ -201,13 +201,10 @@ class ItemController extends Controller
         return redirect()->back()->with('delete','Berhasil Melakukan Delete Data');
     }
 
-    public function export($id)
-{
-    $item = Item::findOrFail($id);
-
-    // Memanggil class export dan export data berdasarkan ID
-    return Excel::download(new ItemExport($id), 'item_' . $id . '.xlsx');
-}
+    public function export($companyId)
+    {
+        return Excel::download(new ItemExport($companyId), 'Items.xlsx');
+    }
     
     public function export_excel(){
         $export = new Export;
@@ -220,18 +217,19 @@ class ItemController extends Controller
             'file'=> 'required|mimes:csv,xls,xlsx'
         ]);
 
-        // menangkap file excel
         $file = $request->file('file');
 
         // membuat nama file unik
-        $nama_file = rand().$file->getClientOriginalExtension();
+        $nama_file = $file->hashName();
 
-        // upload ke folder file_item di dalam folder public
-        $file->move('file_item', $nama_file);
+        //temporary file
+        $path = $file->storeAs('public/excel/',$nama_file);
 
         // import data
-        Excel::import(new Import, public_path('/file_item/' .$nama_file));
+        $import = Excel::import(new UsersImport(), storage_path('app/public/excel/'.$nama_file));
 
+
+        // import data
         return redirect('/peralatan');
         
     }

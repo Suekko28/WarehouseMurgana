@@ -52,7 +52,7 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/perusahaan/detail/{id}/search', [ItemController::class, 'search']);
     Route::get('/assets',[FileController::class,'open'])->name('file.open'); 
     Route::get('/download',[FileController::class,'download']);
-    Route::get('/perusahaan/detail/{id}/export', [ItemController::class,'export']);
+    Route::get('/perusahaan/detail/{id}/export', [ItemController::class, 'export']);    
     Route::resource('/perusahaan/detail', ItemController::class);
     
     
