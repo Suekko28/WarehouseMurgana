@@ -35,20 +35,26 @@
 
                 @foreach ($users as $user)
                       <tr>
-                      @php
-                        $id_bef=($users->currentPage()-1)*$per_page;
-                        $role=$user->role;
-                        if($role==1){
-                          $role="Admin";
-                        } else{
-                          $role="User";
+                        @php
+                        $id_bef = ($users->currentPage() - 1) * $per_page;
+                        $role = $user->role;
+                        if ($role == 1) {
+                            $role = "Admin";
+                        } else {
+                            $role = "User";
                         }
-                        if($user->company_id!=NULL){
-                        $company_name=$company[$user->company_id-1]->name;
-                        }else{
-                          $company_name="Admin";
+                        $company_name = "Admin"; // Default value
+                        if ($user->company_id != null) {
+                            foreach ($company as $companyItem) {
+                                if ($companyItem->id == $user->company_id) {
+                                    $company_name = $companyItem->name;
+                                    break; // Keluar dari perulangan setelah ditemukan
+                                }
+                            }
                         }
-                      @endphp
+                    @endphp
+                    
+                    
                       <th scope="row">{{ $loop->iteration +$id_bef}}</th>                     
                         <td>{{$user->name}}</td>
                         <td>{{$user->email}}</td>
