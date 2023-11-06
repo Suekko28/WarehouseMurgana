@@ -2,11 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\Export;
+use App\Exports\ItemExport;
+use App\Imports\Import;
 use App\Models\Company;
 use App\Models\Item;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use Illuminate\Validation\Rules\In;
+use Maatwebsite\Excel\Facades\Excel;
+
 
 class ItemController extends Controller
 {
@@ -195,6 +200,58 @@ class ItemController extends Controller
         $item->delete();
         return redirect()->back()->with('delete','Berhasil Melakukan Delete Data');
     }
+
+    public function export($companyId)
+    {
+        return Excel::download(new ItemExport($companyId), 'Items.xlsx');
+    }
+    
+    public function export_excel(){
+        $export = new Export;
+        return Excel::download($export, 'Peralatan.xlsx');
+    }
+
+    public function import_excel(Request $request){
+        // validasi
+        $this->validate($request, [
+            'file'=> 'required|mimes:csv,xls,xlsx'
+        ]);
+
+        $file = $request->file('file');
+
+        // membuat nama file unik
+        $nama_file = $file->hashName();
+
+        //temporary file
+        $path = $file->storeAs('public/excel/',$nama_file);
+
+        // import data
+        $import = Excel::import(new UsersImport(), storage_path('app/public/excel/'.$nama_file));
+
+
+        // import data
+        return redirect('/peralatan');
+        
+    }
+
+
+    // public function search(Request $request) {
+    //     $search = $request->search;
+    //     $data = DB::table('items')
+    //     ->where('alat', 'like', "%".$search."%")
+    //     ->limit(10)
+    //     ->get();
+    //     $company = DB::table('companies')
+    //     ->get();
+    //     $try = DB::table('items')
+    //     ->get();
+
+    //     if($data->count()==0){
+    //         return view('item.search',['kosong'=>true]);
+    //     }
+
+    //     return view('item.search', compact('search','data', 'company','try'),['kosong'=>false]);
+    // }
 
     
 
