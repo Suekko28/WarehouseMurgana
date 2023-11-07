@@ -20,8 +20,8 @@
                     <div class="col text-right">
                       @if(auth()->user()->role==1)
                         <button type="button" class="btn btn-outline-success btn-md mb-5" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-plus"></i> Barang</button>
-                        <button type="button" class="btn btn-outline-danger btn-md mb-5" ><i class="fa-solid fa-file-import"></i> Import</button>
-                      @endif
+                        <button type="button" class="btn btn-outline-danger btn-md mb-5" data-bs-toggle="modal" data-bs-target="#importModal"><i class="fa-solid fa-file-import"></i> Import</button>
+                        @endif
                       <a href="{{ url('perusahaan/detail/' .$data->id.'/export')}}" type="button" class="btn btn-outline-primary btn-md mb-5 " target="_blank"><i class="fa-solid fa-download"></i> Download</a>
                     </div>   
             </div>
@@ -98,4 +98,5 @@
     </main>
     @include('item.edit')
     @include('item.create')
+    @include('item.import')
 @endsection

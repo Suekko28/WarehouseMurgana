@@ -212,27 +212,31 @@ class ItemController extends Controller
     }
 
     public function import_excel(Request $request){
-        // validasi
+        // Validate the uploaded file
         $this->validate($request, [
-            'file'=> 'required|mimes:csv,xls,xlsx'
+            'file' => 'required|mimes:csv,xls,xlsx',
         ]);
-
+    
         $file = $request->file('file');
-
-        // membuat nama file unik
+        $company_id = $request->input('company_id'); // Get the selected company ID
+    
+        // Generate a unique filename for the uploaded file
         $nama_file = $file->hashName();
-
-        //temporary file
-        $path = $file->storeAs('public/excel/',$nama_file);
-
-        // import data
-        $import = Excel::import(new UsersImport(), storage_path('app/public/excel/'.$nama_file));
-
-
-        // import data
-        return redirect('/peralatan');
-        
+    
+        // Store the file temporarily
+        $path = $file->storeAs('public/excel/', $nama_file);
+    
+        // Create an instance of your import class, passing the company ID
+        $import = new Import($company_id);
+    
+        // Import the data from the uploaded file
+        Excel::import($import, storage_path('app/public/excel/' . $nama_file));
+    
+        // Redirect to the appropriate page
+        return redirect('/perusahaan/detail/' . $company_id)->with('success', 'Data berhasil diimpor');
     }
+    
+    
 
 
     // public function search(Request $request) {
