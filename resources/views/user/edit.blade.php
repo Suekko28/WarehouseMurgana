@@ -3,7 +3,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Input Barang</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Pengguna</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -34,7 +34,7 @@
             <div class="mb-3" id="selectCompany2" hidden disabled>
             <label for="company" class="form-label" >Company</label>
             <select name="company" class="form-control w-100" id="company">
-                <option value="">--Pilih Company--</option>
+              <option value="">--Pilih Company--</option>
                 @foreach($company as $comp)
                 <option value="{{$comp->id}}">{{$comp->name}}</option>
                 @endforeach
@@ -51,27 +51,33 @@
 </div>
 </div>
 <script>
-  function keluarkan(id,userId){
+  document.getElementById("role2").addEventListener("change", munculkan);
+
+function keluarkan(id, userId) {
     var cells = document.getElementsByTagName("tr");
-    let name=cells[id].children[1].innerHTML;
-    let email=cells[id].children[2].innerHTML;
-    let company=cells[id].children[3].innerHTML;
-    let role=cells[id].children[4].innerHTML;
-    let targetUrl="/users/"+userId;
-    document.getElementById("name").value=name;
-    document.getElementById("email").value=email;
-    document.getElementById("company").value=company;
-    document.getElementById("role2").value=role;
-    document.getElementById("formEdit").action=targetUrl;
-  }
-  function munculkan(){
-        if(document.getElementById("role2").value=="User"){
-            document.getElementById("selectCompany2").hidden = false;
-            document.getElementById("selectCompany2").disabled = false;
-        }
-        else{
-            document.getElementById("selectCompany2").hidden = true;
-            document.getElementById("selectCompany2").disabled = true;
-        }
+    let name = cells[id].children[1].innerHTML;
+    let email = cells[id].children[2].innerHTML;
+    let company = cells[id].children[3].innerHTML;
+    let role = cells[id].children[4].innerHTML;
+    let targetUrl = "/users/" + userId;
+    document.getElementById("name").value = name;
+    document.getElementById("email").value = email;
+    document.getElementById("role2").value = role;
+    munculkan(); // Memanggil fungsi munculkan untuk menyesuaikan tampilan perusahaan
+    document.getElementById("formEdit").action = targetUrl;
+}
+
+
+  function munculkan() {
+    var roleSelect = document.getElementById("role2");
+    var selectCompany = document.getElementById("selectCompany2");
+
+    if (roleSelect.value === "User") {
+      selectCompany.hidden = false;
+      selectCompany.disabled = false;
+    } else {
+      selectCompany.hidden = true;
+      selectCompany.disabled = true;
     }
+  }
 </script>

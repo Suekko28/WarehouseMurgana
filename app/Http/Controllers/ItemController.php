@@ -2,11 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\Export;
+use App\Exports\ItemExport;
+use App\Imports\Import;
 use App\Models\Company;
 use App\Models\Item;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use Illuminate\Validation\Rules\In;
+use Maatwebsite\Excel\Facades\Excel;
+
 
 class ItemController extends Controller
 {
@@ -16,7 +21,7 @@ class ItemController extends Controller
     
     public function index()
     {
-        $per_page=2;
+        $per_page=10;
         $items = Item::paginate($per_page);
         return view('user.peralatan', compact('items','per_page'));
     }
@@ -79,7 +84,7 @@ class ItemController extends Controller
         //storing file
         
 
-        return redirect()->back()->with('status','Berhasil Menambahkan Data');
+        return redirect()->back()->with('success','Berhasil Menambahkan Data');
         // return redirect()->route('perusahaan.index', ['id' => $request->company_id])->with('success', 'Berhasil Menambahkan Data');
         
     }
@@ -89,7 +94,7 @@ class ItemController extends Controller
      */
     public function show(string $id)
     {
-        $per_page=5;
+        $per_page=10;
         $data = Company::findOrFail($id);
         $try=Item::where('company_id','=',$id)->paginate($per_page);
         return view('item.detail', compact('try','data','per_page'));
@@ -157,7 +162,7 @@ class ItemController extends Controller
             $item->file=$data['file'];
             $file_control->delete($item->getOriginal()['file']);
             $item->update();
-            return redirect()->back()->with('status','Item Updated Successfully');
+            return redirect()->back()->with('status','Berhasil Melakukan Update Data');
 
         }
         else{
@@ -181,7 +186,7 @@ class ItemController extends Controller
             $item->tgl_msk=$data['tgl_msk'];
             $item->tgl_klr=$data['tgl_klr'];
             $item->update();
-            return redirect()->back()->with('status','Item Updated Successfully');
+            return redirect()->back()->with('success','Berhasil Melakukan Update Data');
         }
         
     }
@@ -193,8 +198,60 @@ class ItemController extends Controller
     {
         $item=Item::find($id);
         $item->delete();
-        return redirect()->back()->with('status','Item Deleted Successfully');
+        return redirect()->back()->with('delete','Berhasil Melakukan Delete Data');
     }
+
+    public function export($companyId)
+    {
+        return Excel::download(new ItemExport($companyId), 'Items.xlsx');
+    }
+    
+    public function export_excel(){
+        $export = new Export;
+        return Excel::download($export, 'Peralatan.xlsx');
+    }
+
+    public function import_excel(Request $request){
+        // validasi
+        $this->validate($request, [
+            'file'=> 'required|mimes:csv,xls,xlsx'
+        ]);
+
+        $file = $request->file('file');
+
+        // membuat nama file unik
+        $nama_file = $file->hashName();
+
+        //temporary file
+        $path = $file->storeAs('public/excel/',$nama_file);
+
+        // import data
+        $import = Excel::import(new UsersImport(), storage_path('app/public/excel/'.$nama_file));
+
+
+        // import data
+        return redirect('/peralatan');
+        
+    }
+
+
+    // public function search(Request $request) {
+    //     $search = $request->search;
+    //     $data = DB::table('items')
+    //     ->where('alat', 'like', "%".$search."%")
+    //     ->limit(10)
+    //     ->get();
+    //     $company = DB::table('companies')
+    //     ->get();
+    //     $try = DB::table('items')
+    //     ->get();
+
+    //     if($data->count()==0){
+    //         return view('item.search',['kosong'=>true]);
+    //     }
+
+    //     return view('item.search', compact('search','data', 'company','try'),['kosong'=>false]);
+    // }
 
     
 

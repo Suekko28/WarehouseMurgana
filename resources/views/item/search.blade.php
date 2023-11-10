@@ -22,10 +22,10 @@
                         <button type="button" class="btn btn-outline-success btn-md mb-5" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-plus"></i> Barang</button>
                         <button type="button" class="btn btn-outline-danger btn-md mb-5" ><i class="fa-solid fa-file-import"></i> Import</button>
                       @endif
-                      <a href="{{ url('perusahaan/detail/' .$data->id.'/export')}}" type="button" class="btn btn-outline-primary btn-md mb-5 " target="_blank"><i class="fa-solid fa-download"></i> Download</a>
+                        <button type="button" class="btn btn-outline-primary btn-md mb-5 "><i class="fa-solid fa-download"></i> Download</button>
                     </div>   
             </div>
-            {{-- <form action="{{ url('/perusahaan/detail/'.$data->id.'/search') }}" method="GET">              
+            {{-- <form action="{{ route('search') }}" method="GET">              
               <input class="form-control me-2 rounded-pill p-2" name="search" type="search" placeholder="Cari Disini" aria-label="Search">
           </form> --}}
           
@@ -71,12 +71,8 @@
                         <td>{{$item->seri}}</td>
                         <td>{{$item->pengesahan}}</td>
                         <td>{{ \Carbon\Carbon::parse($item->tgl_msk)->format('d-m-Y') }}</td>                        
-                        <td>{{ \Carbon\Carbon::parse($item->tgl_klr)->format('d-m-Y') }}</td>   
-                        @if ($keterangan->days > 30)                        
-                        <td class="text-white badge mt-2 bg-success rounded text-center">Sisa Waktu {{$keterangan->format(' %y tahun %m bulan %d hari')}}</td> 
-                        @else
-                        <td class="text-white badge mt-2 bg-danger rounded text-center">Sisa Waktu {{$keterangan->format(' %y tahun %m bulan %d hari')}}</td> 
-                        @endif                         
+                        <td>{{ \Carbon\Carbon::parse($item->tgl_klr)->format('d-m-Y') }}</td>                             
+                        <td class="text-white badge mt-2 bg-success rounded text-center">Sisa Waktu {{$keterangan->format(' %y tahun %m bulan %d hari')}}</td>
                         @if(auth()->user()->role==1)
                         <td>
                           <a href="{{ route('file.open',['file'=>$item->file]) }}" target="_blank"><button type="button" class="btn btn-primary mb-2"><i class=" fa fa-file"></i></button></a>
