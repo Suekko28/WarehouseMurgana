@@ -45,6 +45,7 @@
                         <th scope="col">Tanggal Masuk</th>
                         <th scope="col">Tanggal Keluar</th>
                         <th scope="col">Keterangan</th>
+                        <th scope="col">File</th>
                         @if(auth()->user()->role==1)
                         <th scope="col">Aksi</th>
                       </tr>
@@ -79,7 +80,18 @@
                         @endif                         
                         @if(auth()->user()->role==1)
                         <td>
-                          <a href="{{ route('file.open',['file'=>$item->file]) }}" target="_blank"><button type="button" class="btn btn-primary mb-2"><i class=" fa fa-file"></i></button></a>
+                          @if($item->file)
+                              <a href="{{ route('file.open',['file'=>$item->file]) }}" target="_blank">
+                                  <button type="button" class="btn btn-primary mb-2"><i class="fa fa-file"></i></button>
+                              </a>
+                              <a href="" class="btn btn-danger mb-2"><i class="fa fa-solid fa-trash"></i></a>
+                          @else
+                              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#fileUploadModal">
+                                  Upload File
+                              </button>
+                          @endif
+                      </td>
+                        <td>
                           <button type="button" onclick="keluarkan({{$loop->iteration}},{{$item->id}},{{$data->file}})" id="btn-edit" class="btn btn-warning mb-2" data-bs-toggle="modal" data-bs-target="#editModal"><i class=" fa fa-solid fa-pen-to-square" style="color:white;"></i></button>
                           <a href="{{ url('delete-item/'.$item->id) }}" class="btn btn-danger mb-2"><i class="fa fa-solid fa-trash"></i></a>
                       </td>
@@ -99,4 +111,5 @@
     @include('item.edit')
     @include('item.create')
     @include('item.import')
+    @include('item.upload')
 @endsection

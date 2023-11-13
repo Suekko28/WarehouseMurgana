@@ -11,6 +11,7 @@ use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Storage;
 
 
 class ItemController extends Controller
@@ -162,7 +163,7 @@ class ItemController extends Controller
             $item->file=$data['file'];
             $file_control->delete($item->getOriginal()['file']);
             $item->update();
-            return redirect()->back()->with('status','Berhasil Melakukan Update Data');
+            return redirect()->back()->with('success','Berhasil Melakukan Update Data');
 
         }
         else{
@@ -235,6 +236,30 @@ class ItemController extends Controller
         // Redirect to the appropriate page
         return redirect('/perusahaan/detail/' . $company_id)->with('success', 'Data berhasil diimpor');
     }
+
+    public function uploadFile(Request $request, $id)
+{
+    // Validate the file
+    $request->validate([
+        'file' => 'required|mimes:pdf|max:2048', // Adjust max file size if needed
+    ]);
+
+    // Process the file upload
+    if ($request->hasFile('file')) {
+        $file = $request->file('file');
+        $fileName = time() . '_' . $file->getClientOriginalName();
+        $file->move(public_path('/uploads'), $fileName); // Adjust the upload path as needed
+    } else {
+        return redirect()->back()->with('error', 'No file uploaded.');
+    }
+
+    // Save file information to the database
+    $item = Item::findOrFail($id);
+    $item->file = $fileName;
+    $item->save();
+
+    return redirect()->back()->with('success', 'File uploaded successfully.');
+}
     
     
 
