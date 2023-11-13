@@ -247,8 +247,12 @@ class ItemController extends Controller
     // Process the file upload
     if ($request->hasFile('file')) {
         $file = $request->file('file');
-        $fileName = time() . '_' . $file->getClientOriginalName();
-        $file->move(public_path('/uploads'), $fileName); // Adjust the upload path as needed
+        if ($file->isValid()) {
+            $fileName = time() . '_' . $file->getClientOriginalName();
+            // Rest of the code...
+        } else {
+            return redirect()->back()->with('error', 'Invalid file.');
+        }
     } else {
         return redirect()->back()->with('error', 'No file uploaded.');
     }
