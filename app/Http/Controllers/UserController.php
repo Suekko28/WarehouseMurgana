@@ -88,9 +88,9 @@ class UserController extends Controller
     {
         // dd($request);
         $request->validate([
-            'name' => 'required|max:20',
-            'email' => 'required|max:50',
-            'role' => 'required|max:20'
+            'name' => 'required|max:100',
+            'email' => 'required|max:100',
+            'role' => 'required|max:100'
         ],[
             'name.required' => 'Nama Wajib Diisi',
             'email.required' => 'Email Wajib Diisi',

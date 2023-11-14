@@ -35,17 +35,11 @@
      @endforeach  
  </div>
    </div>
-   {{-- {{$data ->links()}} --}}
+   {{$data ->links()}}
  </div>
 
  @include('company.edit')
- @include('company.create')
- 
-
-      
+ @include('company.create') 
   @endif
-
-
-
   </main>
 @endsection
