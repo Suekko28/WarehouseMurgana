@@ -54,11 +54,11 @@ class CompanyController extends Controller
     {
 
         $request->validate([
-            'name' => 'required|max:20',
-            
+            'name' => 'required|max:100',
+
         ],[
             'name.required' => 'Nama Perusahaan Wajib Diisi',
-           
+
 
         ]);
 
@@ -79,7 +79,7 @@ class CompanyController extends Controller
         $data = Company::findOrFail($id);
 
         return view('item.detail', compact('data'));
-        
+
 
 
         //return view('company.detail', compact('data'));
@@ -103,14 +103,14 @@ class CompanyController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'name' => 'required|max:20',
-            
+            'name' => 'required|max:100',
+
         ],[
             'name.required' => 'Nama Perusahaan Wajib Diisi',
-           
+
 
         ]);
-        
+
         $data = Company::findOrFail($id);
 
        $data->update([
@@ -144,13 +144,13 @@ class CompanyController extends Controller
         return view('search', compact('search', 'data'),['kosong'=>False]);
     }
 
- 
-
-   
-
-  
 
 
 
-   
+
+
+
+
+
+
 }

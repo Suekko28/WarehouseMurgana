@@ -36,17 +36,17 @@ class UserController extends Controller
         // dd($request);
 
         $request->validate([
-            'name' => 'required|max:20',
-            'password'=>'required|max:20',
-            'email' => 'required|max:50',
-            'role' => 'required|max:20'
+            'name' => 'required|max:100',
+            'password'=>'required|max:100',
+            'email' => 'required|max:100',
+            'role' => 'required|max:100'
         ],[
             'name.required' => 'Nama Wajib Diisi',
             'password.required'=>'Password Wajib Diisi',
             'email.required' => 'Email Wajib Diisi',
             'role.required' => 'Role Wajib Diisi'
         ]);
-        
+
         if($request->role=="Admin"){
             $role=1;
         }else{
@@ -59,7 +59,7 @@ class UserController extends Controller
             'email' => $request->email,
             'role' => $role,
         ];
-        
+
         User::create($data);
         return redirect()->back()->with('status','Berhasil Menambahkan Pengguna');
     }
@@ -69,7 +69,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        
+
     }
 
     /**
@@ -96,8 +96,8 @@ class UserController extends Controller
             'email.required' => 'Email Wajib Diisi',
             'role.required' => 'Role Wajib Diisi'
         ]);
-        
-       
+
+
         if($request->role=="Admin"){
             $role=1;
         }else{
@@ -124,7 +124,7 @@ class UserController extends Controller
             return redirect()->back()->with('status','Berhasil Mengupdate Pengguna');
 
         }
-        else{   
+        else{
             $data = [
                 'name' => $request->name,
                 'email' => $request->email,
@@ -142,7 +142,7 @@ class UserController extends Controller
             $user->update();
             return redirect()->back()->with('delete','Gagal Mengupdate Pengguna');
         }
-        
+
     }
 
     /**

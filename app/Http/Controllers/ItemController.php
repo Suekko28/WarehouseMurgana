@@ -18,7 +18,7 @@ class ItemController extends Controller
     /**
      * Display a listing of the resource.
      */
-    
+
     public function index()
     {
         $per_page=10;
@@ -104,8 +104,8 @@ class ItemController extends Controller
      */
     public function edit(string $id)
     {
-        
-        
+
+
     }
 
     /**
@@ -113,7 +113,7 @@ class ItemController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        
+
         $request->validate([
 
             'alat' => 'required|max:20',
@@ -130,11 +130,11 @@ class ItemController extends Controller
             'pabrik.required' => 'Lokasi Wajib Diisi',
             'seri.required' => 'No Seri Wajib Diisi',
             'pengesahan.required' => 'No Pengesahan Wajib Diisi',
-            'tgl_msk.required' => 'Tanggal Masuk Wajib Diisi',   
-            'tgl_klr.required' => 'Tanggal Keluar Wajib Diisi',   
+            'tgl_msk.required' => 'Tanggal Masuk Wajib Diisi',
+            'tgl_klr.required' => 'Tanggal Keluar Wajib Diisi',
         ]);
         if($request->hasFile('file')){
-            
+
             $rand_generator=Str::random(8);
             $file_control=new FileController();
             $tujuan_upload = 'data_file';
@@ -165,7 +165,7 @@ class ItemController extends Controller
 
         }
         else{
-            
+
             $data = [
                 'alat' => $request->alat,
                 'lokasi' => $request->lokasi,
@@ -175,7 +175,7 @@ class ItemController extends Controller
                 'tgl_msk' => $request->tgl_msk,
                 'tgl_klr' => $request->tgl_klr,
             ];
-            
+
             $item=Item::find($id);
             $item->alat=$data['alat'];
             $item->lokasi=$data['lokasi'];
@@ -187,7 +187,7 @@ class ItemController extends Controller
             $item->update();
             return redirect()->back()->with('success','Berhasil Melakukan Update Data');
         }
-        
+
     }
 
     /**
@@ -215,12 +215,12 @@ class ItemController extends Controller
 
     return redirect()->back()->with('success', 'File berhasil dihapus');
 }
-    
+
     public function export($companyId)
     {
         return Excel::download(new ItemExport($companyId), 'Items.xlsx');
     }
-    
+
     public function export_excel(){
         $export = new Export;
         return Excel::download($export, 'Peralatan.xlsx');
@@ -249,22 +249,22 @@ class ItemController extends Controller
     //     $request->validate([
     //         'file' => 'required|mimes:pdf|max:2048',
     //     ]);
-    
+
     //     if ($request->hasFile('file')) {
     //         $file = $request->file('file');
     //         $fileName = time() . '_' . $file->getClientOriginalName();
     //         $file->move(public_path('/uploads'), $fileName);
-    
+
     //         $item = Item::findOrFail($id);
     //         $item->file = $fileName;
     //         $item->save();
-    
+
     //         return redirect()->back()->with('success', 'File uploaded successfully.');
     //     } else {
     //         return redirect()->back()->with('error', 'No file uploaded.');
     //     }
     // }
-    
+
 
 
     // public function search(Request $request) {
@@ -285,6 +285,6 @@ class ItemController extends Controller
     //     return view('item.search', compact('search','data', 'company','try'),['kosong'=>false]);
     // }
 
-    
+
 
 }
