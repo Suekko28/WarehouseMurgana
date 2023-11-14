@@ -227,21 +227,22 @@ class ItemController extends Controller
         return Excel::download($export, 'Peralatan.xlsx');
     }
 
-    public function import_excel(Request $request, $id)
+    public function showImportForm($id)
     {
-        $this->validate($request, [
-            'file' => 'required|mimes:csv,xls,xlsx',
+    $companies = Company::all(); // Fetch the list of companies
+    return view('item.import', compact('companies', 'id'));
+    }   
+
+    public function import(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|mimes:xlsx,xls',
+            'company_id' => 'required|exists:companies,id',
         ]);
-    
-        $file = $request->file('file');
-    
-        // Create an instance of your import class, passing the company ID
-        $import = new Import($id);
-    
-        // Import the data from the uploaded file
-        Excel::import($import, $file);
-    
-        return redirect('/perusahaan/detail/' . $id)->with('success', 'Data berhasil diimpor');
+
+        Excel::import(new Import, $request->file('file'));
+
+        return redirect()->back()->with('success', 'Data imported successfully.');
     }
 
 
