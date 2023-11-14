@@ -8,41 +8,29 @@ use Maatwebsite\Excel\Concerns\ToModel;
 
 class Import implements ToModel
 {
+    protected $companyId;
+
+    // Konstruktor untuk menerima $id perusahaan
+    public function __construct($companyId)
+    {
+        $this->companyId = $companyId;
+    }
+
     /**
      * @param array $row
-     *
      * @return \Illuminate\Database\Eloquent\Model|null
      */
     public function model(array $row)
     {
-        // Validate the row data
-        $validator = Validator::make($row, [
-            'alat' => 'required|max:20',
-            'lokasi' => 'required|max:20',
-            'pabrik' => 'required|max:20',
-            'seri' => 'required|max:20',
-            'pengesahan' => 'required|max:20',
-            'tgl_msk' => 'required|date',
-            'tgl_klr' => 'required|date',
-            'company_id' => 'required|exists:companies,id',
-        ]);
-
-        // If validation fails, log the errors and return null
-        if ($validator->fails()) {
-            \Log::error('Validation error during import: ' . json_encode($validator->errors()->all()));
-            return null;
-        }
-
-        // If validation passes, create and return a new Item instance
         return new Item([
-            'alat' => $row['alat'],
-            'lokasi' => $row['lokasi'],
-            'pabrik' => $row['pabrik'],
-            'seri' => $row['seri'],
-            'pengesahan' => $row['pengesahan'],
-            'tgl_msk' => $row['tgl_msk'],
-            'tgl_klr' => $row['tgl_klr'],
-            'company_id' => $row['company_id'],
+            'alat' => $row['0'],
+            'lokasi' => $row['1'],
+            'pabrik' => $row['2'],
+            'seri' => $row['3'],
+            'pengesahan' => $row['4'],
+            'tgl_msk' => \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['5'])->format('Y-m-d'),        
+            'tgl_klr' => \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['6'])->format('Y-m-d'),            
+            'company_id' => $this->companyId, // Menggunakan $this->companyId yang diambil dari konstruktor
         ]);
     }
 }

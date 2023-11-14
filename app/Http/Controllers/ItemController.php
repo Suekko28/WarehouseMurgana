@@ -197,7 +197,6 @@ class ItemController extends Controller
     {
         $item=Item::find($id);
         $item->delete();
-        $item->deleteFile();
         return redirect()->back()->with('delete','Berhasil Melakukan Delete Data');
     }
 
@@ -226,24 +225,23 @@ class ItemController extends Controller
         $export = new Export;
         return Excel::download($export, 'Peralatan.xlsx');
     }
+    public function import_excel(Request $request, $id)
+{
+    $request->validate([
+        'file' => 'required|mimes:xlsx,xls',
+    ]);
 
-    public function showImportForm($id)
-    {
-    $companies = Company::all(); // Fetch the list of companies
-    return view('item.import', compact('companies', 'id'));
-    }   
+    $file = $request->file('file');
 
-    public function import(Request $request)
-    {
-        $request->validate([
-            'file' => 'required|mimes:xlsx,xls',
-            'company_id' => 'required|exists:companies,id',
-        ]);
+    // Menggunakan new Import($id) untuk memberikan nilai $id ke konstruktor Import
+    Excel::import(new Import($id), $file);
 
-        Excel::import(new Import, $request->file('file'));
+    return redirect()->back()->with('success', 'Data berhasil diimport.');
+}
 
-        return redirect()->back()->with('success', 'Data imported successfully.');
-    }
+
+
+
 
 
 
