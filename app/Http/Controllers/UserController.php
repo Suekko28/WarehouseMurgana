@@ -61,7 +61,7 @@ class UserController extends Controller
         ];
         
         User::create($data);
-        return redirect()->back()->with('status','Berhasil Menambahkan Pengguna');
+        return redirect()->back()->with('success','Berhasil Menambahkan Pengguna');
     }
 
     /**
@@ -113,7 +113,7 @@ class UserController extends Controller
             ];
             $user=User::find($id);
             if($user->name==="sa-admin"){
-                return redirect()->back()->with('status','Berhasil Mengupdate Pengguna');
+                return redirect()->back()->with('success','Berhasil Mengupdate Pengguna');
             }
             $user->name=$data['name'];
             $user->password=$data['password'];
@@ -121,7 +121,7 @@ class UserController extends Controller
             $user->company_id=$data['company'];
             $user->role=$data['role'];
             $user->update();
-            return redirect()->back()->with('status','Berhasil Mengupdate Pengguna');
+            return redirect()->back()->with('success','Berhasil Mengupdate Pengguna');
 
         }
         else{   
