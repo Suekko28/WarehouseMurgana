@@ -58,9 +58,13 @@ class CompanyController extends Controller
 
         ],[
             'name.required' => 'Nama Perusahaan Wajib Diisi',
+<<<<<<< Updated upstream
+
+=======
+>>>>>>> Stashed changes
 
 
-        ]);
+        ]);php
 
        Company::create([
         'name' => $request->name
@@ -130,6 +134,7 @@ class CompanyController extends Controller
         return redirect()->to('perusahaan')->with('delete', 'Berhasil Melakukan Delete Perusahaan');
     }
 
+<<<<<<< Updated upstream
     public function search(Request $request){
         $search = $request->search;
         $data = DB::table('companies')
@@ -152,4 +157,15 @@ class CompanyController extends Controller
 
 
 
+=======
+
+
+
+
+
+
+
+
+
+>>>>>>> Stashed changes
 }
