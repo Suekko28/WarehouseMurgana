@@ -40,11 +40,11 @@ class ItemController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'alat' => 'required|max:20',
-            'lokasi' => 'required|max:20',
-            'pabrik' => 'required|max:20',
-            'seri' => 'required|max:20',
-            'pengesahan' => 'required|max:20',
+            'alat' => 'required|max:100',
+            'lokasi' => 'required|max:100',
+            'pabrik' => 'required|max:100',
+            'seri' => 'required|max:100',
+            'pengesahan' => 'required|max:100',
             'tgl_msk' => 'required',
             'tgl_klr' => 'required',
             'company_id' => 'required',
@@ -115,15 +115,15 @@ class ItemController extends Controller
     {
 
         $request->validate([
-
-            'alat' => 'required|max:20',
-            'lokasi' => 'required|max:20',
-            'pabrik' => 'required|max:20',
-            'seri' => 'required|max:20',
-            'pengesahan' => 'required|max:20',
-            'file' => 'mimes:pdf',
+            'alat' => 'required|max:100',
+            'lokasi' => 'required|max:100',
+            'pabrik' => 'required|max:100',
+            'seri' => 'required|max:100',
+            'pengesahan' => 'required|max:100',
             'tgl_msk' => 'required',
             'tgl_klr' => 'required',
+            'company_id' => 'required',
+            'file' => 'nullable|mimes:pdf', // Make file upload optional
         ], [
             'alat.required' => 'Kategori Alat Wajib Diisi',
             'lokasi.required' => 'Lokasi Wajib Diisi',

@@ -103,7 +103,7 @@ class CompanyController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'name' => 'required|max:20',
+            'name' => 'required|max:100',
             
         ],[
             'name.required' => 'Nama Perusahaan Wajib Diisi',
