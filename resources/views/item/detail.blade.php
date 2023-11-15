@@ -3,8 +3,8 @@
 @section('Navbar')
     <style>
         /* .table{
-                overflow-x: auto;
-              } */
+                    overflow-x: auto;
+                  } */
     </style>
     <main>
         <div class="container">
@@ -16,22 +16,38 @@
                             <div class="col">
                                 <h5 class="text-success fw-bold mb-5">{{ $data->name }}</h5>
                             </div>
-                            <div class="col text-right">
+                            <div class="col text-right d-flex flex-row justify-content-end">
                                 @if (auth()->user()->role == 1)
-                                    <button type="button" class="btn btn-outline-success btn-md mb-5" data-bs-toggle="modal"
-                                        data-bs-target="#exampleModal"><i class="fa-solid fa-plus"></i> Barang</button>
-                                    <button type="button" class="btn btn-outline-danger btn-md mb-5" data-bs-toggle="modal"
-                                        data-bs-target="#importModal"><i class="fa-solid fa-file-import"></i>
-                                        Import</button>
+                                <div class="button">
+                                    <button type="button" class="btn btn-outline-success btn-md mt-2 me-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                        <i class="fa-solid fa-plus"></i> Barang
+                                    </button>
+                                    <button type="button" class="btn btn-outline-danger btn-md mt-2 me-2" data-bs-toggle="modal" data-bs-target="#importModal">
+                                        <i class="fa-solid fa-file-import"></i> Import
+                                    </button>
+                                </div>
                                 @endif
-                                <a href="{{ url('perusahaan/detail/' . $data->id . '/export') }}" type="button"
-                                    class="btn btn-outline-primary btn-md mb-5 " target="_blank"><i
-                                        class="fa-solid fa-download"></i> Download</a>
-                                <a href="{{ url('perusahaan/' . $data->id . '/export-pdf') }}" type="button"
-                                    class="btn btn-outline-primary btn-md mb-5 " target="_blank">
-                                    <i class="fa-solid fa-download"></i> Export PDF
-                                </a>
+                                <ul class="navbar-nav">
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <h3 class="btn btn-outline-primary btn-md">Download</h3>
+                                        </a>
+                                        <ul class="dropdown-menu dropdown-menu-right text-center" aria-labelledby="navbarDropdown">
+                                            <li>
+                                                <a href="/peralatan/export" type="button" class="btn btn-outline-success btn-md mb-2" target="_blank">
+                                                    <i class="fa-solid fa-download"></i> Excel
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="/peralatan/cetak_pdf" type="button" class="btn btn-outline-danger btn-md" target="_blank">
+                                                    <i class="fa-solid fa-download"></i> PDF
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
                             </div>
+                            
                         </div>
 
                         @include('layout.message')
