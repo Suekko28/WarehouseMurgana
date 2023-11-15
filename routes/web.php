@@ -41,6 +41,7 @@ Route::middleware(['auth'])->group(function(){
         Route::get('/pengguna',[UserController::class,'index']);
         Route::get('/peralatan',[ItemController::class,'index']);
         Route::get('/peralatan/export',[ItemController::class,'export_excel']);  
+        Route::get('/peralatan/cetak_pdf',[ItemController::class,'cetak_pdf']);  
         Route::resource('/users',UserController::class);
     });
     Route::resource('/perusahaan', CompanyController::class);
@@ -56,6 +57,7 @@ Route::middleware(['auth'])->group(function(){
     Route::resource('/perusahaan/detail', ItemController::class);
     Route::delete('perusahaan.detail/{id}/delete-file', [ItemController::class, 'deleteFile'])->name('delete.file');
     Route::post('/perusahaan/detail/{id}/import', [ItemController::class, 'import_excel'])->name('import_data');
+    Route::get('/perusahaan/{id}/export-pdf', [ItemController::class, 'exportPdf'])->name('export.pdf');
 
 });
 
