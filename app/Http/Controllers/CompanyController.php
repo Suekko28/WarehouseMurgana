@@ -52,9 +52,9 @@ class CompanyController extends Controller
      */
     public function store(Request $request)
     {
-
+        
         $request->validate([
-            'name' => 'required|max:20',
+            'name' => 'required|max:100',
             
         ],[
             'name.required' => 'Nama Perusahaan Wajib Diisi',
@@ -134,8 +134,7 @@ class CompanyController extends Controller
         $search = $request->search;
         $data = DB::table('companies')
         ->where('name', 'like', "%".$search."%")
-        ->limit(10)
-        ->get();
+        ->paginate(8);
 
         if($data->count()==0){
             return view('search',['kosong'=>True]);

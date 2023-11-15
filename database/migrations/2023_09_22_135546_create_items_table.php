@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('pabrik');
             $table->string('seri');
             $table->string('pengesahan');
-            $table->string('file');
+            $table->string('file')->nullable();;
             $table->date('tgl_msk');
             $table->date('tgl_klr');
             $table->unsignedBigInteger('company_id');
