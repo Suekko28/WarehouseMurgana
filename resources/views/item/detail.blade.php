@@ -34,20 +34,21 @@
                                         </a>
                                         <ul class="dropdown-menu dropdown-menu-right text-center" aria-labelledby="navbarDropdown">
                                             <li>
-                                                <a href="/peralatan/export" type="button" class="btn btn-outline-success btn-md mb-2" target="_blank">
+                                                <a href="{{ route('export.excel', ['id' => $data->id]) }}" type="button" class="btn btn-outline-success btn-md mb-2" target="_blank">
                                                     <i class="fa-solid fa-download"></i> Excel
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="/peralatan/exportPdf " type="button" class="btn btn-outline-danger btn-md" target="_blank">
+                                                <a href="{{ route('export.pdf', ['id' => $data->id]) }}" type="button" class="btn btn-outline-danger btn-md" target="_blank">
                                                     <i class="fa-solid fa-download"></i> PDF
                                                 </a>
                                             </li>
                                         </ul>
+                                        
                                     </li>
                                 </ul>
                             </div>
-
+                            
                         </div>
 
                         @include('layout.message')

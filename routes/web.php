@@ -53,7 +53,7 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/assets',[FileController::class,'open'])->name('file.open'); 
     Route::get('/download',[FileController::class,'download']);
     Route::post('/perusahaan/detail/{id}/import', [ItemController::class, 'import_excel'])->name('import_data');
-    Route::get('/perusahaan/detail/{id}/export', [ItemController::class, 'export']);    
+    Route::get('/perusahaan/detail/{id}/export', [ItemController::class, 'export'])->name('export.excel');    
     Route::resource('/perusahaan/detail', ItemController::class);
     Route::delete('perusahaan.detail/{id}/delete-file', [ItemController::class, 'deleteFile'])->name('delete.file');
     Route::post('/perusahaan/detail/{id}/import', [ItemController::class, 'import_excel'])->name('import_data');
