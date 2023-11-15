@@ -8,6 +8,11 @@
 </head>
 
 <body>
+    <div class="header text-center">
+        <img src="template/logo.jpg" alt="" width="150px" height="50px">
+        <h4>Jasa Pemeriksaan K3 - Consultant Lingkungan - General Supplier</h4>
+        <hr style="height:2px;border-width:0;color:black;background-color:black">
+    </div>
     <table class="table table-bordered text-center vw-100">
         <thead>
             <tr>
