@@ -7,17 +7,14 @@
     <div class="container">
       <div class="row">
         <div class="col-12 col-xl-12 col-lg-12 col-md-12">
-  
       <div class="card p-5 mb-3">
-        <div class="row text-center mb-3">
-            
-    @if ($kosong==True)
-           
-  </div>
-  <img src="/notfound.jpg" alt="" width="300px" height="300px" class="mx-auto">
-      
+        <div class="row text-center mb-3"> 
+        @if ($kosong==True)
+  <img src="/notfound.jpg" alt="" width="300px" height="300px" class="mx-auto">  
   @else
   <h5 class="text-success fw-bold mb-3">Hasil Search : {{$search}}</h5>
+</div>
+
   <div class="row justify-content-start text-center mb-5 ">
     @foreach ($data as $item)
     <div class="card mb-5 shadow rounded me-3 card_company" style="width: 18rem;">
@@ -37,6 +34,8 @@
    </div>
    {{$data ->links()}}
  </div>
+      </div>
+    </div>
 
  @include('company.edit')
  @include('company.create') 
