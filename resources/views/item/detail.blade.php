@@ -39,7 +39,7 @@
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="/peralatan/cetak_pdf" type="button" class="btn btn-outline-danger btn-md" target="_blank">
+                                                <a href="/peralatan/exportPdf " type="button" class="btn btn-outline-danger btn-md" target="_blank">
                                                     <i class="fa-solid fa-download"></i> PDF
                                                 </a>
                                             </li>
@@ -47,7 +47,7 @@
                                     </li>
                                 </ul>
                             </div>
-                            
+
                         </div>
 
                         @include('layout.message')
