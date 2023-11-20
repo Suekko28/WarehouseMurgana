@@ -229,7 +229,7 @@ class ItemController extends Controller
     public function cetak_pdf()
     {
         $items = Item::all(); // or retrieve your data as needed
-        $pdf = PDF::loadView('user.peralatan_pdf', ['items' => $items]);
+        $pdf = PDF::loadView('user.peralatan_pdf', ['items' => $items])->setPaper('a4', 'landscape');
         return $pdf->stream();
     }
 
@@ -237,8 +237,7 @@ class ItemController extends Controller
     {
         $items = Item::where('company_id', $id)->get();
         $data = Company::findOrFail($id);
-
-        $pdf = PDF::loadView('item.detail_pdf', ['items' => $items, 'data' => $data]);
+        $pdf = PDF::loadView('item.detail_pdf', ['items' => $items, 'data' => $data])->setPaper('a4', 'landscape');
 
         return $pdf->stream('peralatan.pdf');
     }
