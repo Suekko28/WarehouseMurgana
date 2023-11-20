@@ -40,11 +40,11 @@ class ItemController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'alat' => 'required|max:20',
-            'lokasi' => 'required|max:20',
-            'pabrik' => 'required|max:20',
-            'seri' => 'required|max:20',
-            'pengesahan' => 'required|max:20',
+            'alat' => 'required|max:100',
+            'lokasi' => 'required|max:100',
+            'pabrik' => 'required|max:100',
+            'seri' => 'required|max:100',
+            'pengesahan' => 'required|max:100',
             'tgl_msk' => 'required',
             'tgl_klr' => 'required',
             'company_id' => 'required',
@@ -115,15 +115,15 @@ class ItemController extends Controller
     {
 
         $request->validate([
-
-            'alat' => 'required|max:20',
-            'lokasi' => 'required|max:20',
-            'pabrik' => 'required|max:20',
-            'seri' => 'required|max:20',
-            'pengesahan' => 'required|max:20',
-            'file' => 'mimes:pdf',
+            'alat' => 'required|max:100',
+            'lokasi' => 'required|max:100',
+            'pabrik' => 'required|max:100',
+            'seri' => 'required|max:100',
+            'pengesahan' => 'required|max:100',
             'tgl_msk' => 'required',
             'tgl_klr' => 'required',
+            'company_id' => 'required',
+            'file' => 'nullable|mimes:pdf', // Make file upload optional
         ], [
             'alat.required' => 'Kategori Alat Wajib Diisi',
             'lokasi.required' => 'Lokasi Wajib Diisi',
@@ -229,7 +229,7 @@ class ItemController extends Controller
     public function cetak_pdf()
     {
         $items = Item::all(); // or retrieve your data as needed
-        $pdf = PDF::loadView('user.peralatan_pdf', ['items' => $items]);
+        $pdf = PDF::loadView('user.peralatan_pdf', ['items' => $items])->setPaper('a4', 'landscape');
         return $pdf->stream();
     }
 
@@ -237,8 +237,7 @@ class ItemController extends Controller
     {
         $items = Item::where('company_id', $id)->get();
         $data = Company::findOrFail($id);
-
-        $pdf = PDF::loadView('item.detail_pdf', ['items' => $items, 'data' => $data]);
+        $pdf = PDF::loadView('item.detail_pdf', ['items' => $items, 'data' => $data])->setPaper('a4', 'landscape');
 
         return $pdf->stream('peralatan.pdf');
     }
