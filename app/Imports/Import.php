@@ -28,8 +28,8 @@ class Import implements ToModel
             'pabrik' => $row['2'],
             'seri' => $row['3'],
             'pengesahan' => $row['4'],
-            'tgl_msk' => \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['5'])->format('Y-m-d'),        
-            'tgl_klr' => \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['6'])->format('Y-m-d'),            
+            'tgl_msk' => \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['5'])->format('Y-m-d'),
+            'tgl_klr' => \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['6'])->format('Y-m-d'),
             'company_id' => $this->companyId, // Menggunakan $this->companyId yang diambil dari konstruktor
         ]);
     }
